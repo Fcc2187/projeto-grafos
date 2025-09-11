@@ -1,0 +1,29 @@
+# .gitignore
+
+# Pastas do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environments
+.env
+.venv
+venv/
+env/
+
+# Dados de cache e arquivos temporários
+*.log
+*.tmp
+*.bak
+
+# Jupyter/Notebook
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# Arquivos de saída e relatórios
+out/*.html
+out/*.png
+out/*.json
+out/*.csv

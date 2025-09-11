@@ -1,0 +1,10 @@
+# requirements.txt
+
+# Manipulação de dados
+pandas
+
+# Visualização e UX
+matplotlib
+plotly
+pyvis
+streamlit
