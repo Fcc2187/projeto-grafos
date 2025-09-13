@@ -8,3 +8,4 @@ matplotlib
 plotly
 pyvis
 streamlit
+pytest
