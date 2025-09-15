@@ -1,0 +1,91 @@
+bairro_origem,bairro_destino,logradouro,observacao,peso
+Boa Viagem,Pina,"Av. Domingos Ferreira / Av. Boa Viagem","continuidade da orla e vias paralelas",0.8
+Boa Viagem,Imbiribeira,"Av. Mal. Mascarenhas de Morais","eixos arteriais de múltiplas faixas",0.8
+Boa Viagem,Ipsep,"Viaduto Tancredo Neves","ligação sobre Mascarenhas de Morais",1.2
+Boa Viagem,Brasília Teimosa,"Via da orla / calçadão","continuidade costeira; acesso urbano",1.0
+Pina,Brasília Teimosa,"Av. Brasília Formosa / Ponte do Pina","ligação costeira e sobre canais",1.2
+Pina,Imbiribeira,"Av. Herculano Bandeira → Mascarenhas de Morais","conexão direta de bairro",1.0
+Imbiribeira,Areias,"Av. Recife","corredor sudoeste",1.0
+Imbiribeira,Jiquiá,"Av. Recife / ruas internas","limite oeste",1.0
+Imbiribeira,Afogados,"Av. Mal. Mascarenhas de Morais → Av. Santa Cruz","conexão urbana",1.0
+Ipsep,Imbiribeira,"Av. Mal. Mascarenhas de Morais; Rua Jean Émile Favre; Av. Sul","rotas alternativas entre bairros",0.8
+Ipsep,Jordão,"Av. Recife / Av. Dois Rios","eixo sul",1.0
+Jordão,Ibura,"Rua Dr. Júlio de Oliveira","malha local",1.0
+Ibura,Cohab,"Av. Recife / Av. Dois Rios","via arterial ao complexo Cohab",1.0
+Pina,Boa Vista,"Ponte Paulo Guerra / Ponte do Pina","sistema de pontes para o Centro",1.2
+Pina,Cabanga,"Ponte Motocolombó / Av. Saturnino de Brito","sobre o estuário",1.2
+Cabanga,São José,"Ponte Giratória / Av. Sul","eixo central histórico",1.2
+São José,Santo Antônio,"Ponte Buarque de Macedo / Rua Imperador","ilhas centrais",1.2
+Santo Antônio,Boa Vista,"Ponte Duarte Coelho (Ponte da Boa Vista)","ligação clássica",1.2
+Boa Vista,Soledade,"Rua da Imperatriz / Av. Conde da Boa Vista","malha central",1.0
+Boa Vista,Paissandu,"Rua do Paissandu","via local",1.0
+Paissandu,Ilha do Leite,"Rua do Paissandu / Av. Agamenon Magalhães","travessia de canal",1.2
+Boa Vista,Coelhos,"Rua Joaquim Nabuco / vias locais","limite por canal",1.0
+Coelhos,Ilha Joana Bezerra,"Ponte Joaquim Cardozo","travessia sobre o Capibaribe",1.2
+Ilha Joana Bezerra,Cabanga,"Av. Eng. José Estelita","faixa litorânea/estaleiro",1.0
+São José,Recife,"Ponte Maurício de Nassau","travessia histórica",1.2
+Santo Amaro,Boa Vista,"Ponte Princesa Isabel / Av. Agamenon Magalhães","arterial central",1.2
+Santo Amaro,Recife,"Ponte Limoeiro","acesso ao Bairro do Recife",1.2
+Santo Amaro,Cabanga,"Av. Sul (marginal)","malha perimetral",1.0
+Santo Amaro,Paissandu,"Rua Fernandes Vieira / vias locais","malha em grid",1.0
+Graças,Espinheiro,"Rua Amélia / Rua da Hora","malha urbana tradicional",1.0
+Graças,Casa Forte,"Rua Dr. Raul Jordão / Av. 17 de Agosto","via paisagística",1.0
+Casa Forte,Parnamirim,"Av. 17 de Agosto","continuidade",1.0
+Parnamirim,Poço,"Rua Amélia (extensão)","via local",1.0
+Parnamirim,Santana,"Rua Prof. Arnóbio Marques","malha local",1.0
+Casa Forte,Monteiro,"Av. 17 de Agosto → Praça de Casa Forte","conexão direta",1.0
+Espinheiro,Encruzilhada,"Av. João de Barros","arterial",0.8
+Encruzilhada,Hipódromo,"Rua Dr. José Maria / Av. Prof. José dos Anjos","vias coletoras",1.0
+Hipódromo,Arruda,"Rua Fernandes de Barros","acesso ao Estádio do Arruda",1.0
+Arruda,Campo Grande,"Rua Dois de Julho","malha local",1.0
+Campo Grande,Rosarinho,"Rua Amaro Coutinho","malha local",1.0
+Rosarinho,Torreão,"Rua Vereador Otacílio Azevedo","malha local",1.0
+Espinheiro,Torreão,"Rua Conselheiro Portela","vias paralelas",1.0
+Graças,Aflitos,"Rua da Angustura / Rua da Amizade","malha local",1.0
+Aflitos,Casa Amarela,"Rua Samuel de Farias / Av. Norte","ligação por coletoras",1.0
+Casa Amarela,Morro da Conceição,"Av. Norte","arterial em encosta",0.8
+Casa Amarela,Apipucos,"Av. Apipucos","via ribeirinha",1.0
+Apipucos,Poço,"Av. 17 de Agosto (margem norte)","continuidade",1.0
+Apipucos,Dois Irmãos,"Av. 17 de Agosto / BR-101 (local)","entorno do parque",1.0
+Dois Irmãos,Nova Descoberta,"Estr. de Belém","malha de encosta",1.0
+Nova Descoberta,Vasco da Gama,"Estr. Nova Descoberta","malha local",1.0
+Vasco da Gama,Macaxeira,"Av. Norte","arterial",0.8
+Casa Amarela,Parnamirim,"Eixo Graças/Parnamirim (continuidade urbana)","conectividade histórica",1.0
+Graças,Derby,"Av. Agamenon Magalhães","arterial urbana",0.8
+Derby,Madalena,"Ponte da Madalena","ponte sobre o Capibaribe",1.2
+Madalena,Prado,"Rua Real da Torre","via principal",1.0
+Prado,Torre,"Rua Real da Torre / Av. Beira Rio","malha ribeirinha",1.0
+Torre,Cordeiro,"Av. Caxangá","arterial metropolitana",0.8
+Cordeiro,Iputinga,"Av. Caxangá","continuidade",0.8
+Iputinga,Várzea,"Av. Caxangá","eixo até UFPE",0.8
+Várzea,Cidade Universitária,"Av. Acadêmico Hélio Ramos","entorno UFPE",1.0
+Cidade Universitária,Curado,"BR-232 (acesso local)","ligação metropolitana",1.5
+Engenho do Meio,Iputinga,"Rua Benfica (prolongamento)","malha local",1.0
+Engenho do Meio,Caxangá,"Av. Caxangá (marginal)","acesso",1.0
+Torrões,Cordeiro,"Rua Gomes Taborda","malha local",1.0
+Ilha do Retiro,Madalena,"Ponte do Sport","travessia estádio",1.2
+Ilha do Retiro,Torrões,"Av. Prefeito Lima e Castro","vias internas",1.0
+Afogados,Mustardinha,"Rua José Osório","malha local",1.0
+Afogados,Mangueira,"Av. Eng. Abdias de Carvalho","arterial oeste",0.8
+Mangueira,Bongi,"Av. Eng. Abdias de Carvalho","continuidade",0.8
+Bongi,San Martin,"Rua São Miguel","malha local",1.0
+San Martin,Sancho,"Rua José Bonifácio (local)","malha local",1.0
+Sancho,Estância,"Rua Antenor Navarro","malha local",1.0
+Estância,Jardim São Paulo,"Rua João de Vasconcelos","malha local",1.0
+Jardim São Paulo,Tejipió,"Av. Recife","arterial",0.8
+Tejipió,Totó,"Av. Liberdade","malha local",1.0
+Totó,Curado,"BR-232 (acesso local)","ligação metropolitana",1.5
+Água Fria,Bomba do Hemetério,"Av. Beberibe","arterial",0.8
+Bomba do Hemetério,Linha do Tiro,"Av. Prof. Estevão F. da Cunha","via coletora",1.0
+Linha do Tiro,Dois Unidos,"Av. Hildebrando de Vasconcelos","via coletora",1.0
+Dois Unidos,Cajueiro,"Av. Prof. José dos Anjos","via coletora",1.0
+Cajueiro,Campina do Barreto,"Rua Cândido Simões","malha local",1.0
+Campina do Barreto,Arruda,"Av. Prof. José dos Anjos","eixo ao estádio",1.0
+Arruda,Encruzilhada,"Rua Dr. José Maria","malha local",1.0
+Encruzilhada,Peixinhos,"Av. Beberibe (ponte)","limite Recife/Olinda; ponte",1.3
+Beberibe,Porto da Madeira,"Av. Beberibe","continuidade norte",1.0
+Beberibe,Ponto de Parada,"Av. Beberibe","arterial",0.8
+Beberibe,Cajueiro,"Vias internas","malha local",1.0
+São José,Soledade,"Rua do Hospício (proximidade Centro)","malha central",1.0
+Cabanga,Coelhos,"Av. Sul (marginal)","malha central",1.0
+Ilha do Leite,Coelhos,"Rua Frei Matias Tevis","malha local",1.0
