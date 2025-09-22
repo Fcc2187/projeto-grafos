@@ -1,6 +1,8 @@
 import pandas as pd
 import unicodedata
 from .graph import Graph
+import json
+import csv
 
 
 def derreter_bairros(caminho_entrada: str, caminho_saida: str) -> None:
@@ -71,3 +73,86 @@ def carregar_bairros(caminho_csv: str) -> Graph:
         print(f"Ocorreu um erro ao carregar o grafo: {e}")
         
     return grafo
+
+def carregar_arestas(grafo: Graph, caminho_csv: str):
+    df = pd.read_csv(caminho_csv)
+
+    for _, row in df.iterrows():
+        u = row['bairro_origem'].strip()
+        v = row['bairro_destino'].strip()
+        grafo.add_edges(u,v)
+
+    print(f"{grafo.size()} arestas adicionadas ao grafo")
+
+def calcular_recife_global(grafo: Graph, caminho_saida: str):
+    metrica = {
+        "ordem": len(grafo),
+        "tamanho": grafo.size(),
+        "densidade": round(grafo.density(), 4)
+    }
+
+    # salva em JSON
+    with open(caminho_saida, "w") as f:
+        json.dump(metrica, f, indent=4)
+
+    print(f"Métricas globais salvas em '{caminho_saida}'")
+    return metrica
+
+
+def calcular_metricas_microrregioes(grafo: Graph, caminho_bairros: str, caminho_saida: str):
+    df_bairros = pd.read_csv(caminho_bairros)
+    microrregioes_metrics = []
+
+    for micror, group in df_bairros.groupby("microrregiao"):
+        nodes = group["bairro"].tolist()
+        sub = grafo.subgraph(nodes)
+        microrregioes_metrics.append({
+            "microrregiao": int(micror),
+            "ordem": sub.__len__(),
+            "tamanho": sub.size(),
+            "densidade": round(sub.density(), 4)
+        })
+
+    # salva em JSON
+    with open(caminho_saida, "w") as f:
+        json.dump(microrregioes_metrics, f, indent=4)
+
+    print(f"Métricas por microrregião salvas em '{caminho_saida}'")
+    return microrregioes_metrics
+
+def calcular_metricas_ego(grafo: Graph, caminho_saida: str):
+    """
+    Para cada bairro, calcula métricas da ego-network:
+    - grau
+    - ordem_ego
+    - tamanho_ego
+    - densidade_ego
+    Salva tudo em um CSV.
+    """
+    resultados = []
+
+    for bairro in grafo.nodes():
+        ego = grafo.ego_graph(bairro)
+
+        grau = len(grafo.neighbors(bairro))
+        ordem_ego = len(ego)
+        tamanho_ego = ego.size()
+        densidade_ego = round(ego.density(), 4)
+
+        resultados.append({
+            "bairro": bairro,
+            "grau": grau,
+            "ordem_ego": ordem_ego,
+            "tamanho_ego": tamanho_ego,
+            "densidade_ego": densidade_ego
+        })
+
+    with open(caminho_saida, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(
+            f, fieldnames=["bairro", "grau", "ordem_ego", "tamanho_ego", "densidade_ego"]
+        )
+        writer.writeheader()
+        writer.writerows(resultados)
+
+    print(f"Métricas de ego-network salvas em '{caminho_saida}'")
+    return resultados
