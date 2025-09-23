@@ -23,8 +23,3 @@ env/
 # VSCode
 .vscode/
 
-# Arquivos de saída e relatórios
-out/*.html
-out/*.png
-out/*.json
-out/*.csv
