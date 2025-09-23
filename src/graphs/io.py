@@ -156,3 +156,17 @@ def calcular_metricas_ego(grafo: Graph, caminho_saida: str):
 
     print(f"Métricas de ego-network salvas em '{caminho_saida}'")
     return resultados
+
+
+def calcular_graus(grafo: Graph, caminho_saida: str):
+    """
+    Calcula o grau (número de conexões) de cada bairro e salva em CSV.
+    """
+    import csv
+    with open(caminho_saida, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["bairro", "grau"])
+        for bairro in sorted(grafo.nodes()):
+            grau = len(grafo.neighbors(bairro))
+            writer.writerow([bairro, grau])
+    print(f"Grafo de graus salvo em '{caminho_saida}'")
