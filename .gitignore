@@ -23,3 +23,9 @@ env/
 # VSCode
 .vscode/
 
+<<<<<<< HEAD
+=======
+# Arquivos de saída e relatórios
+out/*.html
+out/*.png
+>>>>>>> 0ef48e582e976f8b46b6624af7dc187583dce659

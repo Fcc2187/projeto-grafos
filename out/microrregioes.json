@@ -1,0 +1,38 @@
+[
+    {
+        "microrregiao": 1,
+        "ordem": 11,
+        "tamanho": 11,
+        "densidade": 0.2
+    },
+    {
+        "microrregiao": 2,
+        "ordem": 18,
+        "tamanho": 17,
+        "densidade": 0.1111
+    },
+    {
+        "microrregiao": 3,
+        "ordem": 29,
+        "tamanho": 35,
+        "densidade": 0.0862
+    },
+    {
+        "microrregiao": 4,
+        "ordem": 12,
+        "tamanho": 0,
+        "densidade": 0.0
+    },
+    {
+        "microrregiao": 5,
+        "ordem": 16,
+        "tamanho": 19,
+        "densidade": 0.1583
+    },
+    {
+        "microrregiao": 6,
+        "ordem": 8,
+        "tamanho": 3,
+        "densidade": 0.1071
+    }
+]
