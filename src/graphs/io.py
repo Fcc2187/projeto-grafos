@@ -159,14 +159,41 @@ def calcular_metricas_ego(grafo: Graph, caminho_saida: str):
 
 
 def calcular_graus(grafo: Graph, caminho_saida: str):
-    """
-    Calcula o grau (número de conexões) de cada bairro e salva em CSV.
-    """
-    import csv
+    resultados = [{"bairro": bairro, "grau": len(grafo.neighbors(bairro))} for bairro in grafo.nodes()]
+
     with open(caminho_saida, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["bairro", "grau"])
-        for bairro in sorted(grafo.nodes()):
-            grau = len(grafo.neighbors(bairro))
-            writer.writerow([bairro, grau])
+        writer = csv.DictWriter(f, fieldnames=["bairro", "grau"])
+        writer.writeheader()
+        writer.writerows(resultados)
+
     print(f"Grafo de graus salvo em '{caminho_saida}'")
+    return resultados
+
+def gerar_rankings_json(caminho_graus: str, caminho_ego: str, caminho_saida: str):
+    df_graus = pd.read_csv(caminho_graus)
+    df_ego = pd.read_csv(caminho_ego)
+
+    # Maior grau
+    grau_max = df_graus.loc[df_graus["grau"].idxmax()]
+
+    # Maior densidade_ego com desempate por ordem_ego
+    dens_max = df_ego[df_ego["densidade_ego"] == df_ego["densidade_ego"].max()]
+    dens_final = dens_max.loc[dens_max["ordem_ego"].idxmax()]
+
+    rankings = {
+        "maior_grau": {
+            "bairro": grau_max["bairro"],
+            "grau": int(grau_max["grau"])
+        },
+        "maior_densidade_ego": {
+            "bairro": dens_final["bairro"],
+            "densidade_ego": round(float(dens_final["densidade_ego"]), 4),
+            "ordem_ego": int(dens_final["ordem_ego"])
+        }
+    }
+
+    with open(caminho_saida, "w", encoding="utf-8") as f:
+        json.dump(rankings, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ Rankings gerados com sucesso em: {caminho_saida}")
+    return rankings

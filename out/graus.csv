@@ -1,88 +1,67 @@
 bairro,grau
 Aflitos,25
 Afogados,21
-Agua Fria,0
-Alto Do Mandu,0
-Alto Jose Bonifacio,0
-Alto Jose Do Pinho,0
-Alto José Bonifácio,17
+Agua Fria,24
+Alto Do Mandu,8
+Alto Jose Bonifacio,21
+Alto Jose Do Pinho,4
 Alto Santa Teresinha,8
-Alto do Mandu,8
 Apipucos,8
 Areias,20
 Arruda,32
 Barro,23
 Beberibe,24
-Boa Viagem,17
+Boa Viagem,21
 Boa Vista,23
-Bomba Do Hemeterio,0
-Bomba do Hemetério,8
+Bomba Do Hemeterio,8
 Bongi,4
-Brasilia Teimosa,0
-Brejo Da Guabiraba,0
-Brejo De Beberibe,0
-Brejo da Guabiraba,24
-Brejo de Beberibe,7
+Brasilia Teimosa,4
+Brejo Da Guabiraba,24
+Brejo De Beberibe,7
 Cabanga,6
-Cacote,0
+Cacote,3
 Cajueiro,8
-Campina Do Barreto,0
-Campina do Barreto,15
+Campina Do Barreto,15
 Campo Grande,15
 Casa Amarela,8
 Casa Forte,8
-Caxanga,0
-Caxangá,19
-Caçote,3
-Cidade Universitaria,0
-Cidade Universitária,2
+Caxanga,19
+Cidade Universitaria,2
 Coelhos,18
 Cohab,17
 Coqueiral,6
-Cordeiro,17
-Corrego Do Jenipapo,0
+Cordeiro,22
+Corrego Do Jenipapo,7
 Curado,6
-Córrego do Jenipapo,7
 Derby,8
-Dois Irmaos,0
-Dois Irmãos,8
+Dois Irmaos,8
 Dois Unidos,8
 Encruzilhada,15
-Engenho Do Meio,0
-Engenho do Meio,18
+Engenho Do Meio,18
 Espinheiro,8
-Estancia,0
-Estância,3
-Fundao,0
-Fundão,8
-Gracas,0
-Graças,8
+Estancia,3
+Fundao,8
+Gracas,8
 Guabiraba,7
-Hipodromo,0
-Hipódromo,15
+Hipodromo,15
 Ibura,18
-Ilha Do Leite,0
-Ilha Do Retiro,0
+Ilha Do Leite,6
+Ilha Do Retiro,5
 Ilha Joana Bezerra,1
-Ilha do Leite,6
-Imbiribeira,0
-Ipsep,0
-Iputinga,0
+Imbiribeira,4
+Ipsep,4
+Iputinga,5
 Jaqueira,15
-Jardim Sao Paulo,0
-Jardim São Paulo,6
-Jiquia,0
-Jiquiá,3
-Jordao,0
-Jordão,1
-Linha Do Tiro,0
-Linha do Tiro,8
+Jardim Sao Paulo,6
+Jiquia,3
+Jordao,1
+Linha Do Tiro,8
 Macaxeira,7
-Madalena,0
-Mangabeira,0
+Madalena,5
+Mangabeira,4
 Mangueira,4
 Monteiro,15
-Morro Da Conceicao,0
+Morro Da Conceicao,4
 Mustardinha,4
 Nova Descoberta,7
 Paissandu,6
@@ -90,39 +69,29 @@ Parnamirim,15
 Passarinho,7
 Pau-Ferro,7
 Peixinhos,15
-Pina,0
-Poco,0
-Ponto De Parada,0
-Ponto de Parada,15
-Porto Da Madeira,0
-Porto da Madeira,8
-Poço,15
-Prado,0
+Pina,4
+Poco,15
+Ponto De Parada,15
+Porto Da Madeira,8
+Prado,5
 Recife,18
 Rosarinho,15
 San Martin,4
 Sancho,6
 Santana,15
 Santo Amaro,1
-Santo Antonio,0
-Santo Antônio,6
-Sao Jose,0
-Sitio Dos Pintos,0
+Santo Antonio,6
+Sao Jose,6
+Sitio Dos Pintos,15
 Soledade,6
-São José,6
-Sítio dos Pintos,15
 Tamarineira,15
-Tejipio,0
-Tejipió,6
-Torre,0
-Torreao,0
-Torreão,15
-Torroes,0
-Torrões,1
-Toto,0
-Totó,6
-Varzea,0
-Vasco Da Gama,0
-Várzea,2
+Tejipio,6
+Torre,5
+Torreao,15
+Torroes,1
+Toto,6
+Varzea,2
+Vasco Da Gama,4
 Zumbi,0
-Água Fria,24
+bairro_origem,1
+bairro_destino,1

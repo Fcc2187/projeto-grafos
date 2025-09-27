@@ -1,0 +1,11 @@
+{
+  "maior_grau": {
+    "bairro": "Arruda",
+    "grau": 32
+  },
+  "maior_densidade_ego": {
+    "bairro": "Cohab",
+    "densidade_ego": 1.0,
+    "ordem_ego": 18
+  }
+}
