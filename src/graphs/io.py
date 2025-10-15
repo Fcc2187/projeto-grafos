@@ -197,3 +197,67 @@ def gerar_rankings_json(caminho_graus: str, caminho_ego: str, caminho_saida: str
 
     print(f"✅ Rankings gerados com sucesso em: {caminho_saida}")
     return rankings
+
+def carregar_grafo_ponderado(caminho_csv: str) -> Graph:
+    """
+    Lê adjacencias_bairros.csv e cria um grafo ponderado (arestas com pesos).
+    """
+    grafo = Graph()
+    df = pd.read_csv(caminho_csv)
+
+    for _, row in df.iterrows():
+        u = row["bairro_origem"].strip()
+        v = row["bairro_destino"].strip()
+        peso = float(row["peso"])
+
+        grafo.add_node(u)
+        grafo.add_node(v)
+
+        # Adiciona como (vizinho, peso)
+        if u not in grafo.adj:
+            grafo.adj[u] = []
+        if v not in grafo.adj:
+            grafo.adj[v] = []
+
+        grafo.adj[u].append((v, peso))
+        grafo.adj[v].append((u, peso))
+
+    print(f"Grafo ponderado carregado com {len(grafo)} nós e {grafo.size()} arestas.")
+    return grafo
+
+def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, saida_csv: str, saida_json: str):
+    """
+    Calcula o menor caminho entre pares de endereços (origem, destino) usando Dijkstra.
+    """
+    from .algorithms import dijkstra
+
+    grafo = carregar_grafo_ponderado(caminho_adj)
+    df = pd.read_csv(caminho_enderecos)
+    resultados = []
+
+    for _, row in df.iterrows():
+        origem = str(row["origem"]).strip()
+        destino = str(row["destino"]).strip()
+
+        # Usando os próprios nomes dos bairros
+        custo, caminho = dijkstra(grafo, origem, destino)
+        resultados.append({
+            "origem": origem,
+            "destino": destino,
+            "custo": round(custo, 3),
+            "caminho": " -> ".join(caminho)
+        })
+
+        # Caso especial: Nova Descoberta → Boa Viagem (Setúbal)
+        if origem.lower() == "nova descoberta" and "boa viagem" in destino.lower():
+            with open(saida_json, "w", encoding="utf-8") as fjson:
+                json.dump({
+                    "origem": origem,
+                    "destino": destino,
+                    "caminho": caminho,
+                    "custo": custo
+                }, fjson, indent=2, ensure_ascii=False)
+
+    pd.DataFrame(resultados).to_csv(saida_csv, index=False)
+    print(f"✅ Distâncias calculadas e salvas em '{saida_csv}'")
+    return resultados

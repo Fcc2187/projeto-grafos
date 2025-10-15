@@ -180,8 +180,6 @@ Caxanga,Cidade Universitaria,av.caxanga,"av = arterial",0.8
 Caxanga,Varzea,av.caxanga,"av = arterial",0.8
 Cidade Universitaria,Varzea,r.col_4_3,"r = rua",1.0
 Ibura,Jordao,r.dr_julio_de_oliveira,"r = rua",1.0
-bairro_origem,bairro_destino,logradouro,observacao,peso
-
 Arruda,Campina Do Barreto,av.arruda__campina_do_barreto,"av = arterial",0.8
 Arruda,Campo Grande,av.arruda__campo_grande,"av = arterial",0.8
 Arruda,Encruzilhada,av.arruda__encruzilhada,"av = arterial",0.8
