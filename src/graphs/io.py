@@ -239,7 +239,6 @@ def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, said
         origem = str(row["origem"]).strip()
         destino = str(row["destino"]).strip()
 
-        # Usando os próprios nomes dos bairros
         custo, caminho = dijkstra(grafo, origem, destino)
         resultados.append({
             "origem": origem,
@@ -248,7 +247,6 @@ def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, said
             "caminho": " -> ".join(caminho)
         })
 
-        # Caso especial: Nova Descoberta → Boa Viagem (Setúbal)
         if origem.lower() == "nova descoberta" and "boa viagem" in destino.lower():
             with open(saida_json, "w", encoding="utf-8") as fjson:
                 json.dump({
@@ -259,5 +257,5 @@ def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, said
                 }, fjson, indent=2, ensure_ascii=False)
 
     pd.DataFrame(resultados).to_csv(saida_csv, index=False)
-    print(f"✅ Distâncias calculadas e salvas em '{saida_csv}'")
+    print(f"Distâncias calculadas e salvas em '{saida_csv}'")
     return resultados
