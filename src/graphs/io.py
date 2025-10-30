@@ -259,3 +259,51 @@ def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, said
     pd.DataFrame(resultados).to_csv(saida_csv, index=False)
     print(f"Distâncias calculadas e salvas em '{saida_csv}'")
     return resultados
+
+def carregar_grafo_recife(path_unique, path_adjacencias):
+    """
+    Lê os arquivos CSV e retorna um objeto Graph populado
+    e um dicionário de mapeamento bairro -> microrregiao.
+    """
+    print("Carregando nós (bairros)...")
+    try:
+        df_nodes = pd.read_csv(path_unique)
+        # Criar mapa bairro -> microrregiao [cite: 55]
+        bairro_para_micro = dict(zip(df_nodes['bairro'], df_nodes['microrregiao']))
+    except FileNotFoundError:
+        print(f"Erro: Arquivo de nós não encontrado em {path_unique}")
+        return None, None
+    except Exception as e:
+        print(f"Erro ao ler {path_unique}: {e}")
+        return None, None
+
+    # Cria o objeto Graph
+    G = Graph()
+
+    # Adiciona os nós ao grafo
+    for bairro, microrregiao in bairro_para_micro.items():
+        G.adicionar_no(bairro, microrregiao)
+        
+    print(f"Carregados {G.get_ordem()} nós.")
+
+    print("Carregando arestas (adjacências)...")
+    try:
+        df_edges = pd.read_csv(path_adjacencias)
+    except FileNotFoundError:
+        print(f"Erro: Arquivo de adjacências não encontrado em {path_adjacencias}")
+        return None, None
+    except Exception as e:
+        print(f"Erro ao ler {path_adjacencias}: {e}")
+        return None, None
+
+    # Adiciona as arestas ao grafo
+    for _, linha in df_edges.iterrows():
+        G.adicionar_aresta(
+            linha['bairro_origem'],
+            linha['bairro_destino'],
+            linha.get('peso', 1.0) # Usa peso 1.0 se a coluna não existir
+        )
+        
+    print(f"Carregadas {G.get_tamanho()} arestas.")
+    
+    return G, bairro_para_micro
