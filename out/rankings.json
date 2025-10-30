@@ -1,11 +1,11 @@
 {
   "maior_grau": {
-    "bairro": "Arruda",
-    "grau": 32
+    "bairro": "Casa Amarela",
+    "grau": 9
   },
   "maior_densidade_ego": {
-    "bairro": "Cohab",
+    "bairro": "Hipodromo",
     "densidade_ego": 1.0,
-    "ordem_ego": 18
+    "ordem_ego": 4
   }
 }
