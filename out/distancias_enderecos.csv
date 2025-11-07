@@ -1,6 +1,0 @@
-origem,destino,custo,caminho
-Ilha Do Retiro,Arruda,1.8,Ilha Do Retiro -> Cordeiro -> Arruda
-Aflitos,Apipucos,1.0,Aflitos -> Apipucos
-Boa Viagem,Boa Vista,1.2,Boa Viagem -> Boa Vista
-Cidade Universitaria,Vasco Da Gama,2.6,Cidade Universitaria -> Caxanga -> Alto Jose Bonifacio -> Vasco Da Gama
-Nova Descoberta,Boa Viagem,1.8,Nova Descoberta -> Brejo Da Guabiraba -> Boa Viagem

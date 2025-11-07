@@ -11,16 +11,16 @@ PATH_NODES   = f"{DATA_DIR}/bairros_unique.csv"
 PATH_EDGES   = f"{DATA_DIR}/adjacencia_bairros.csv"   # após Passo 5: com 'peso'
 PATH_ENDS    = f"{DATA_DIR}/enderecos.csv"
 CSV_OUT      = f"{OUT_DIR}/distancias_enderecos.csv"
-JSON_MAND    = f"{OUT_DIR}/percurso_nova_descoberta_setubal.json"
+JSON_MAND    = f"{OUT_DIR}/percurso_nova_descoberta_boa_viagem.json"
 
 def _norm(s: str) -> str:
     if not isinstance(s, str): return ""
     t = unicodedata.normalize("NFKD", s).encode("ASCII", "ignore").decode("ASCII")
     return t.strip().title()
 
-def _is_setubal(s: str) -> bool:
+def _is_boa_viagem(s: str) -> bool:
     s = (s or "").lower()
-    return "setubal" in s or "setúbal" in s
+    return "boa viagem" in s
 
 def test_passo6():
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -46,10 +46,10 @@ def test_passo6():
 
         bx = _norm(bx_raw)
         by = _norm(by_raw)
-        by_node = "Boa Viagem" if _is_setubal(by) else by
+        by_node = "Boa Viagem" if _is_boa_viagem(by) else by
 
         # marca se este CSV contém o par obrigatório
-        if bx == "Nova Descoberta" and _is_setubal(by_raw):
+        if bx == "Nova Descoberta" and _is_boa_viagem(by_raw):
             tem_par_obrigatorio = True
 
         # se o par não existe no grafo, apenas pula (não reprova o teste)
@@ -64,10 +64,10 @@ def test_passo6():
         if custo != float("inf"):
             assert caminho[0] == bx and caminho[-1] == by_node, "Caminho não inicia/termina nos bairros esperados."
 
-        # adequa o nome visual de Setúbal no último nó da string
+        # adequa o nome visual no último nó da string
         caminho_out = list(caminho)
-        if _is_setubal(by) and caminho_out and caminho_out[-1] == "Boa Viagem":
-            caminho_out[-1] = "Boa Viagem (Setúbal)"
+        if _is_boa_viagem(by) and caminho_out and caminho_out[-1] == "Boa Viagem":
+            caminho_out[-1] = "Boa Viagem (Zona Sul)"
 
         linhas.append({
             "X": r.get("X", ""),
@@ -79,11 +79,11 @@ def test_passo6():
         })
 
         # JSON do obrigatório (se existir no CSV)
-        if bx == "Nova Descoberta" and _is_setubal(by_raw) and custo != float("inf"):
+        if bx == "Nova Descoberta" and _is_boa_viagem(by_raw) and custo != float("inf"):
             with open(JSON_MAND, "w", encoding="utf-8") as f:
                 json.dump({
                     "origem": "Nova Descoberta",
-                    "destino": "Boa Viagem (Setúbal)",
+                    "destino": "Boa Viagem (Zona Sul)",
                     "caminho": caminho_out,
                     "custo": float(round(float(custo), 3))
                 }, f, ensure_ascii=False, indent=2)
