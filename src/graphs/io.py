@@ -316,11 +316,12 @@ def carregar_grafo_recife(path_unique, path_adjacencias):
 
     # Adiciona as arestas ao grafo
     for _, linha in df_edges.iterrows():
-        G.adicionar_aresta(
-            linha['bairro_origem'],
-            linha['bairro_destino'],
-            linha.get('peso', 1.0) # Usa peso 1.0 se a coluna não existir
-        )
+        # dentro do loop das arestas
+        u = str(linha['bairro_origem']).strip()
+        v = str(linha['bairro_destino']).strip()
+        peso = float(linha.get('peso', 1.0))
+        G.adicionar_aresta(u, v, peso)
+
         
     print(f"Carregadas {G.get_tamanho()} arestas.")
     

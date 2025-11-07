@@ -1,5 +1,3 @@
-# requirements.txt
-
 # Manipulação de dados
 pandas
 
@@ -8,4 +6,6 @@ matplotlib
 plotly
 pyvis
 streamlit
+
+# Testes automatizados
 pytest

@@ -1,30 +1,45 @@
 import heapq
 
-def dijkstra(grafo, origem, destino):
-    dist = {v: float('inf') for v in grafo.adj}
-    anterior = {v: None for v in grafo.adj}
-    dist[origem] = 0
-    fila = [(0, origem)]
+def dijkstra(G, origem: str, destino: str):
+    """
+    Dijkstra usando a API da sua classe Graph:
+      - G.get_vizinhos(u) -> lista de vizinhos de u
+      - G.get_peso(u, v)  -> peso (>= 0) da aresta (u, v)
+    Retorna: (custo_total, caminho_em_lista)
+    """
+    # inicialização
+    INF = float("inf")
+    dist = {v: INF for v in G.nodes.keys()}
+    prev = {v: None for v in G.nodes.keys()}
+    if origem not in dist or destino not in dist:
+        return INF, []
 
-    while fila:
-        atual_dist, atual = heapq.heappop(fila)
-        if atual_dist > dist[atual]:
+    dist[origem] = 0.0
+    pq = [(0.0, origem)]
+
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d != dist[u]:
             continue
-        if atual == destino:
+        if u == destino:
             break
 
-        for vizinho, peso in grafo.adj[atual]:
-            nova_dist = dist[atual] + peso
-            if nova_dist < dist[vizinho]:
-                dist[vizinho] = nova_dist
-                anterior[vizinho] = atual
-                heapq.heappush(fila, (nova_dist, vizinho))
+        for v in G.get_vizinhos(u):
+            w = float(G.get_peso(u, v))
+            nd = d + w
+            if nd < dist[v]:
+                dist[v] = nd
+                prev[v] = u
+                heapq.heappush(pq, (nd, v))
 
-    # Reconstruir caminho
-    caminho = []
-    atual = destino
-    while atual is not None:
-        caminho.insert(0, atual)
-        atual = anterior[atual]
+    if dist[destino] == INF:
+        return INF, []
 
-    return dist[destino], caminho
+    # reconstrói caminho
+    path = []
+    cur = destino
+    while cur is not None:
+        path.append(cur)
+        cur = prev[cur]
+    path.reverse()
+    return float(dist[destino]), path
