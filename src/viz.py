@@ -40,11 +40,12 @@ def build_path_tree_html(path_nodes: list[str], outfile: str) -> None:
     for u, v in zip(path_nodes, path_nodes[1:]):
         net.add_edge(u, v, color="#ef4444", width=4)
 
-    net.set_options("""var options = {
-      nodes: { font: { size: 18, color: '#e5e7eb' } },
-      edges: { color: { color: '#64748b' } },
-      physics: { stabilization: true }
-    };""")
+    options = {
+        "nodes": {"font": {"size": 18, "color": "#e5e7eb"}},
+        "edges": {"color": {"color": "#64748b"}},
+        "physics": {"stabilization": True}
+    }
+    net.set_options(json.dumps(options))
 
     net.write_html(outfile)
 

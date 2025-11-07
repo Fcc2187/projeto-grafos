@@ -1,18 +1,18 @@
 bairro,grau,ordem_ego,tamanho_ego,densidade_ego
 Casa Amarela,9,10,17,0.37777777777777777
-Agua Fria,7,8,13,0.4642857142857143
+Agua Fria,8,9,14,0.3888888888888889
 Boa Vista,7,8,13,0.4642857142857143
+Alto Jose Do Pinho,6,7,8,0.38095238095238093
 Campo Grande,6,7,11,0.5238095238095238
-Sao Jose,6,7,9,0.42857142857142855
 Santo Antonio,6,7,13,0.6190476190476191
-Areias,5,6,7,0.4666666666666667
+Sao Jose,6,7,9,0.42857142857142855
 Brejo Da Guabiraba,5,6,8,0.5333333333333333
-Apipucos,5,6,7,0.4666666666666667
+Areias,5,6,7,0.4666666666666667
 Coelhos,5,6,9,0.6
 Campina Do Barreto,5,6,9,0.6
-Afogados,5,6,8,0.5333333333333333
-Alto Jose Do Pinho,5,6,7,0.4666666666666667
 Arruda,5,6,9,0.6
+Apipucos,5,6,7,0.4666666666666667
+Afogados,5,6,8,0.5333333333333333
 Ibura,5,6,9,0.6
 Jiquia,5,6,8,0.5333333333333333
 Nova Descoberta,5,6,9,0.6
@@ -54,19 +54,19 @@ Jaqueira,4,5,7,0.7
 Dois Irmaos,4,5,4,0.4
 Monteiro,4,5,7,0.7
 Bongi,3,4,5,0.8333333333333334
+Alto Jose Bonifacio,3,4,4,0.6666666666666666
+Barro,3,4,3,0.5
+Bomba Do Hemeterio,3,4,4,0.6666666666666666
+Alto Santa Teresinha,3,4,3,0.5
 Cidade Universitaria,3,4,5,0.8333333333333334
 Caxanga,3,4,4,0.6666666666666666
-Bomba Do Hemeterio,3,4,4,0.6666666666666666
-Barro,3,4,3,0.5
-Ilha Joana Bezerra,3,4,4,0.6666666666666666
-Cajueiro,3,4,5,0.8333333333333334
 Cohab,3,4,4,0.6666666666666666
 Toto,3,4,5,0.8333333333333334
 Torreao,3,4,4,0.6666666666666666
 Soledade,3,4,6,1.0
 Recife,3,4,5,0.8333333333333334
-Torre,3,4,5,0.8333333333333334
-Peixinhos,3,4,5,0.8333333333333334
+Cajueiro,3,4,5,0.8333333333333334
+Ilha Joana Bezerra,3,4,4,0.6666666666666666
 Jordao,3,4,5,0.8333333333333334
 Linha Do Tiro,3,4,5,0.8333333333333334
 Estancia,3,4,5,0.8333333333333334
@@ -77,19 +77,19 @@ Hipodromo,3,4,6,1.0
 Ilha Do Retiro,3,4,4,0.6666666666666666
 Ilha Do Leite,3,4,5,0.8333333333333334
 Corrego Do Jenipapo,3,4,5,0.8333333333333334
+Torre,3,4,5,0.8333333333333334
+Peixinhos,3,4,5,0.8333333333333334
+Cabanga,2,3,2,0.6666666666666666
+Aflitos,2,3,3,1.0
 Torroes,2,3,2,0.6666666666666666
 Rosarinho,2,3,3,1.0
-Passarinho,2,3,3,1.0
-Cabanga,2,3,2,0.6666666666666666
-Alto Jose Bonifacio,2,3,3,1.0
-Aflitos,2,3,3,1.0
 Dois Unidos,2,3,3,1.0
 Ipsep,2,3,3,1.0
-Mangabeira,1,2,1,1.0
-Brasilia Teimosa,1,2,1,1.0
+Passarinho,2,3,3,1.0
 Cacote,1,2,1,1.0
+Brasilia Teimosa,1,2,1,1.0
 Derby,1,2,1,1.0
-Sitio Dos Pintos,1,2,1,1.0
+Mangabeira,1,2,1,1.0
 Guabiraba,1,2,1,1.0
-Alto Santa Teresinha,0,1,0,0.0
+Sitio Dos Pintos,1,2,1,1.0
 Pau-Ferro,0,1,0,0.0
