@@ -8,7 +8,10 @@ import os
 PATH_NODES = f"{DATA_DIR}/bairros_unique.csv"
 PATH_EDGES = f"{DATA_DIR}/adjacencia_bairros.csv"
 
-os.makedirs(OUT_DIR, exist_ok=True)
+OUT_JSON = os.path.join(OUT_DIR, "json")
+OUT_CSV  = os.path.join(OUT_DIR, "csv")
+os.makedirs(OUT_JSON, exist_ok=True)
+os.makedirs(OUT_CSV,  exist_ok=True)
 
 # 1) Carrega grafo e mapa bairro->microrregião
 G, bairro_para_micro = carregar_grafo_recife(PATH_NODES, PATH_EDGES)
@@ -19,9 +22,9 @@ globais = {
     "tamanho": G.get_tamanho(),
     "densidade": G.get_densidade()
 }
-with open(f"{OUT_DIR}/recife_global.json", "w", encoding="utf-8") as f:
+with open(os.path.join(OUT_JSON, "recife_global.json"), "w", encoding="utf-8") as f:
     json.dump(globais, f, ensure_ascii=False, indent=2)
-print("✓ out/recife_global.json")
+print("✓ out/json/recife_global.json")
 
 # ---------- 3.2 Microrregiões ----------
 micro_para_bairros = defaultdict(list)
@@ -38,9 +41,9 @@ for micro, bairros in micro_para_bairros.items():
         "densidade": sub.get_densidade()
     })
 
-with open(f"{OUT_DIR}/microrregioes.json", "w", encoding="utf-8") as f:
+with open(os.path.join(OUT_JSON, "microrregioes.json"), "w", encoding="utf-8") as f:
     json.dump(lista_micro, f, ensure_ascii=False, indent=2)
-print("✓ out/microrregioes.json")
+print("✓ out/json/microrregioes.json")
 
 # ---------- 3.3 Ego-subrede ----------
 linhas = []
@@ -57,5 +60,5 @@ for bairro in G.nodes.keys():
     })
 
 df = pd.DataFrame(linhas).sort_values("grau", ascending=False)
-df.to_csv(f"{OUT_DIR}/ego_bairro.csv", index=False, encoding="utf-8")
-print("✓ out/ego_bairro.csv")
+df.to_csv(os.path.join(OUT_CSV, "ego_bairro.csv"), index=False, encoding="utf-8")
+print("✓ out/csv/ego_bairro.csv")

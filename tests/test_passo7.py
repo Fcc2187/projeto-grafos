@@ -1,12 +1,14 @@
-# tests/test_passo7.py
-import os
-import json
+import os, json
 from src.viz import build_path_tree_html, build_path_tree_png
 
-OUT_DIR   = "out"
-JSON_PATH = os.path.join(OUT_DIR, "percurso_nova_descoberta_setubal.json")
-HTML_OUT  = os.path.join(OUT_DIR, "arvore_percurso.html")
-PNG_OUT   = os.path.join(OUT_DIR, "arvore_percurso.png")
+OUT_DIR    = "out"
+OUT_JSON   = os.path.join(OUT_DIR, "json")
+OUT_VISUAL = os.path.join(OUT_DIR, "visual")
+os.makedirs(OUT_VISUAL, exist_ok=True)
+
+JSON_PATH = os.path.join(OUT_JSON,   "percurso_nova_descoberta_setubal.json")
+HTML_OUT  = os.path.join(OUT_VISUAL, "arvore_percurso.html")
+PNG_OUT   = os.path.join(OUT_VISUAL, "arvore_percurso.png")
 
 def test_passo7():
     # Pré-requisito: JSON do passo 6
@@ -33,6 +35,5 @@ def test_passo7():
     except RuntimeError as e:
         print(f"[passo7] Aviso: PNG não gerado ({e}). HTML já foi criado.")
 
-# Permite rodar via: python -m tests.test_passo7
 if __name__ == "__main__":
     test_passo7()

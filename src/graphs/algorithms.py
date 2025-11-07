@@ -1,4 +1,5 @@
 import heapq
+from collections import deque
 
 def dijkstra(G, origem: str, destino: str):
     """
@@ -43,3 +44,54 @@ def dijkstra(G, origem: str, destino: str):
         cur = prev[cur]
     path.reverse()
     return float(dist[destino]), path
+
+def bfs_layers(G, source: str):
+    """
+    BFS clássico a partir de 'source'.
+    Retorna (ordem_visita, pai, profundidade) onde:
+      - ordem_visita: lista com a ordem que os nós foram descobertos
+      - pai: dict nó -> predecessor na árvore BFS (source tem None)
+      - profundidade: dict nó -> distância em arestas a partir de source
+    """
+    if source not in G.nodes:
+        raise KeyError(f"Nó de origem '{source}' não existe no grafo.")
+
+    visit_order: list[str] = []
+    parent: dict[str, str | None] = {source: None}
+    depth: dict[str, int] = {source: 0}
+    seen = {source}
+    q = deque([source])
+
+    while q:
+        u = q.popleft()
+        visit_order.append(u)
+        for v in G.get_vizinhos(u):
+            if v not in seen:
+                seen.add(v)
+                parent[v] = u
+                depth[v] = depth[u] + 1
+                q.append(v)
+
+    return visit_order, parent, depth
+
+
+def dfs_preorder(G, source: str):
+    """
+    DFS recursiva simples: retorna a ordem de visita (pré-ordem).
+    Útil para testes e explorações.
+    """
+    if source not in G.nodes:
+        raise KeyError(f"Nó de origem '{source}' não existe no grafo.")
+
+    order: list[str] = []
+    seen = set()
+
+    def _dfs(u: str):
+        seen.add(u)
+        order.append(u)
+        for v in G.get_vizinhos(u):
+            if v not in seen:
+                _dfs(v)
+
+    _dfs(source)
+    return order

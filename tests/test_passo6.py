@@ -12,8 +12,13 @@ PATH_NODES = f"{DATA_DIR}/bairros_unique.csv"
 PATH_EDGES = f"{DATA_DIR}/adjacencia_bairros.csv"
 PATH_ENDS  = f"{DATA_DIR}/enderecos.csv"
 
-CSV_OUT   = f"{OUT_DIR}/distancias_enderecos.csv"
-JSON_MAND = f"{OUT_DIR}/percurso_nova_descoberta_setubal.json"
+OUT_JSON = os.path.join(OUT_DIR, "json")
+OUT_CSV  = os.path.join(OUT_DIR, "csv")
+os.makedirs(OUT_JSON, exist_ok=True)
+os.makedirs(OUT_CSV,  exist_ok=True)
+
+CSV_OUT   = os.path.join(OUT_CSV,  "distancias_enderecos.csv")
+JSON_MAND = os.path.join(OUT_JSON, "percurso_nova_descoberta_setubal.json")
 
 
 def _norm(s: str) -> str:
@@ -31,8 +36,6 @@ def _is_boa_viagem(s: str) -> bool:
 
 
 def test_passo6():
-    os.makedirs(OUT_DIR, exist_ok=True)
-
     # 1) Carrega o grafo ponderado dos bairros
     G, _ = carregar_grafo_recife(PATH_NODES, PATH_EDGES)
     assert G is not None and G.get_ordem() > 0 and G.get_tamanho() > 0, \
@@ -54,40 +57,31 @@ def test_passo6():
     total_processados = 0
 
     for _, r in df.iterrows():
-        bx_raw = str(r["bairro_X"])   # o que veio do CSV
+        bx_raw = str(r["bairro_X"])
         by_raw = str(r["bairro_Y"])
 
-        bx = _norm(bx_raw)            # normalizado (acentos etc.)
+        bx = _norm(bx_raw)
         by = _norm(by_raw)
-
-        # nó usado no grafo: se for Boa Viagem/Setúbal, usamos "Boa Viagem"
         by_node = "Boa Viagem" if _is_boa_viagem(by_raw) else by
 
-        # par obrigatório: Nova Descoberta -> Boa Viagem (=Setúbal no enunciado)
         if bx == "Nova Descoberta" and _is_boa_viagem(by_raw):
             tem_par_obrigatorio = True
 
-        # se não existir nó no grafo, pula — não derruba o teste
         if bx not in G.nodes or by_node not in G.nodes:
             continue
 
         total_processados += 1
         custo, caminho = dijkstra(G, bx, by_node)
 
-        # custo deve ser >= 0
         assert custo >= 0, "Custo negativo encontrado – verifique os pesos."
-
         if custo != float("inf"):
             assert caminho[0] == bx and caminho[-1] == by_node, \
                 "Caminho não inicia/termina nos bairros esperados."
 
-        # Ajusta o último nome para exibir "Boa Viagem (Setúbal)" se destino for Boa Viagem
         caminho_out = list(caminho)
         if _is_boa_viagem(by_raw) and caminho_out and caminho_out[-1] == "Boa Viagem":
             caminho_out[-1] = "Boa Viagem (Setúbal)"
 
-        # Aqui está o ponto que você pediu:
-        # X = bairro de origem do CSV, Y = bairro de destino do CSV
         linhas.append({
             "X": bx_raw,
             "Y": by_raw,
@@ -97,7 +91,6 @@ def test_passo6():
             "caminho": " -> ".join(caminho_out) if caminho_out else ""
         })
 
-        # JSON do par obrigatório
         if bx == "Nova Descoberta" and _is_boa_viagem(by_raw) and custo != float("inf"):
             with open(JSON_MAND, "w", encoding="utf-8") as f:
                 json.dump({
@@ -110,12 +103,11 @@ def test_passo6():
 
     # 3) Salva distancias_enderecos.csv
     pd.DataFrame(
-        linhas,
-        columns=["X", "Y", "bairro_X", "bairro_Y", "custo", "caminho"],
+        linhas, columns=["X", "Y", "bairro_X", "bairro_Y", "custo", "caminho"]
     ).to_csv(CSV_OUT, index=False, encoding="utf-8")
 
     # 4) Validações finais
-    assert os.path.exists(CSV_OUT), "out/distancias_enderecos.csv não foi gerado."
+    assert os.path.exists(CSV_OUT), "out/csv/distancias_enderecos.csv não foi gerado."
     df_out = pd.read_csv(CSV_OUT)
     for col in ["X", "Y", "bairro_X", "bairro_Y", "custo", "caminho"]:
         assert col in df_out.columns, f"Coluna '{col}' ausente em distancias_enderecos.csv"
@@ -129,6 +121,5 @@ def test_passo6():
 
 
 if __name__ == "__main__":
-    # permite rodar direto: python -m tests.test_passo6
     test_passo6()
     print("Passo 6 concluído com sucesso.")

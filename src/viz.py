@@ -1,6 +1,8 @@
 # --- Passo 7: árvore do percurso (visual) ---
 import os
 import json
+from src.graphs.algorithms import bfs_layers
+from colorsys import hsv_to_rgb
 
 # HTML interativo (pyvis)
 try:
@@ -14,39 +16,36 @@ try:
 except Exception:
     plt = None
 
+try:
+    import plotly.graph_objects as go
+except Exception:
+    go = None
 
+
+# --- ÁRVORE do percurso (HTML) com rótulos pretos ---
 def build_path_tree_html(path_nodes: list[str], outfile: str) -> None:
-    """
-    Gera a 'árvore do percurso' em HTML (pyvis), destacando o caminho em vermelho
-    com maior espessura e exibindo rótulos dos bairros.
-    """
     if Network is None:
         raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
-
     if not isinstance(path_nodes, list) or len(path_nodes) < 2:
-        raise ValueError("`path_nodes` deve ser uma lista com pelo menos 2 nós.")
+        raise ValueError("`path_nodes` deve ter pelo menos 2 nós.")
 
     os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
-
     net = Network(height="720px", width="100%", notebook=False, directed=False)
 
-    # nós com rótulo; começo e fim destacados
     start, end = path_nodes[0], path_nodes[-1]
     for n in path_nodes:
         color = "#10b981" if n == start else ("#2563eb" if n == end else "#334155")
-        net.add_node(n, label=n, color=color)
+        net.add_node(n, label=n, color=color, font={"color": "#111827"})  # <-- preto
 
-    # arestas do percurso destacadas
     for u, v in zip(path_nodes, path_nodes[1:]):
         net.add_edge(u, v, color="#ef4444", width=4)
 
-    options = {
-        "nodes": {"font": {"size": 18, "color": "#e5e7eb"}},
-        "edges": {"color": {"color": "#64748b"}},
-        "physics": {"stabilization": True}
-    }
-    net.set_options(json.dumps(options))
-
+    # deixa fonte dos nós preta e bordas discretas
+    net.set_options("""{
+      "nodes": { "font": { "size": 18, "color": "#111827" } },
+      "edges": { "color": { "color": "#94a3b8" } },
+      "physics": { "stabilization": true }
+    }""")
     net.write_html(outfile)
 
 
@@ -129,3 +128,296 @@ def gerar_arvore_percurso_from_json(
         return png_out
     else:
         raise ValueError("`modo` deve ser 'html' ou 'png'.")
+
+def plot_degree_histogram(path_graus_csv: str, out_png: str) -> str:
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import numpy as np
+    os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
+
+    df = pd.read_csv(path_graus_csv)
+    graus = df["grau"].tolist()
+
+    # bins adaptativos: entre 8 e 15
+    bins = max(8, min(15, int(np.sqrt(len(graus)) + 2)))
+
+    plt.figure(figsize=(10, 5))
+    plt.hist(graus, bins=bins, edgecolor="#111827", linewidth=1.0)  # borda preta
+    plt.title("Distribuição dos Graus")
+    plt.xlabel("Grau")
+    plt.ylabel("Frequência")
+    plt.tight_layout()
+    plt.savefig(out_png, dpi=150)
+    plt.close()
+    return out_png
+
+
+def build_top_k_subgraph_html(G, k: int, out_html: str, graus_csv: str) -> str:
+    if Network is None:
+        raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
+    os.makedirs(os.path.dirname(out_html) or ".", exist_ok=True)
+
+    deg = _map_graus_from_csv(graus_csv)
+    # seleciona só bairros presentes no grafo
+    deg = {b: g for b, g in deg.items() if b in G.nodes}
+    top = sorted(deg.items(), key=lambda kv: (-kv[1], kv[0]))[:k]
+    ordem = [b for b, _ in top]
+
+    net = Network(height="720px", width="100%", notebook=False, directed=False)
+
+    # nós com tamanho pela magnitude do grau; rótulos pretos
+    for b in ordem:
+        d = int(deg[b])
+        net.add_node(
+            b, label=f"{b} (grau={d})",
+            value=d, color="#60a5fa", font={"color": "#111827"}
+        )
+
+    # liga em cadeia pela ORDEM de grau (mesmo que não haja aresta real)
+    for u, v in zip(ordem, ordem[1:]):
+        net.add_edge(u, v, color="#64748b", width=2, smooth=True)
+
+    net.set_options("""{
+      "nodes": { "scaling": { "min": 10, "max": 40 }, "font": { "color": "#111827" } },
+      "edges": { "color": { "color": "#64748b" } },
+      "physics": { "stabilization": true }
+    }""")
+    net.write_html(out_html)
+    return out_html
+
+
+def build_top_k_subgraph_png(G, k: int, out_png: str, graus_csv: str) -> str:
+    import matplotlib.pyplot as plt
+    os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
+
+    deg = _map_graus_from_csv(graus_csv)
+    deg = {b: g for b, g in deg.items() if b in G.nodes}
+    top = sorted(deg.items(), key=lambda kv: (-kv[1], kv[0]))[:k]
+    ordem = [b for b, _ in top]
+    vals  = [deg[b] for b in ordem]
+
+    # layout 1D com arestas em cadeia
+    xs = list(range(len(ordem))); ys = [0] * len(ordem)
+    fig, ax = plt.subplots(figsize=(max(8, len(ordem) * 1.2), 3))
+    for i in range(len(ordem) - 1):
+        ax.plot([xs[i], xs[i+1]], [0, 0], color="#64748b", linewidth=2)
+    ax.scatter(xs, ys, s=[80 + v*15 for v in vals])
+    for x, name, v in zip(xs, ordem, vals):
+        ax.text(x, 0.07, f"{name} (grau={v})", ha="center", va="bottom", fontsize=9, color="#111827")
+    ax.set_axis_off()
+    plt.tight_layout()
+    plt.savefig(out_png, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    return out_png
+
+
+# src/viz.py  — substitua a função inteira
+
+def bar_microrregioes_densidade(path_json: str, out_png: str) -> str:
+    import json, matplotlib.pyplot as plt
+    os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
+
+    with open(path_json, "r", encoding="utf-8") as f:
+        dados = json.load(f)
+
+    # ordena por densidade desc
+    dados = sorted(dados, key=lambda d: d["densidade"], reverse=True)
+    labels = [str(d["microrregiao"]) for d in dados]
+    dens   = [float(d["densidade"]) for d in dados]
+
+    plt.figure(figsize=(10, 5))
+    plt.bar(labels, dens, edgecolor="#111827", linewidth=1.0)
+    plt.xlabel("Microrregião")
+    plt.ylabel("Densidade (ego)")
+    plt.title("Ranking de Densidade por Microrregião")
+    plt.tight_layout()
+    plt.savefig(out_png, dpi=150)
+    plt.close()
+    return out_png
+
+
+# --- BFS camadas (HTML) com rótulos pretos ---
+def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
+    if Network is None:
+        raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
+    from collections import deque
+
+    os.makedirs(os.path.dirname(out_html) or ".", exist_ok=True)
+    net = Network(height="720px", width="100%", notebook=False, directed=True)
+
+    # BFS simples sobre a estrutura do seu Graph
+    if raiz not in G.nodes:
+        raise ValueError(f"Nó raiz '{raiz}' não existe no grafo.")
+    q = deque([raiz])
+    visited = {raiz: 0}  # nível
+
+    while q:
+        u = q.popleft()
+        for v in G.get_vizinhos(u):
+            if v not in visited:
+                visited[v] = visited[u] + 1
+                q.append(v)
+
+    # paleta por nível
+    cores = ["#fca5a5","#fdba74","#fde68a","#bbf7d0","#a7f3d0",
+             "#93c5fd","#c4b5fd","#fbcfe8","#fecdd3","#e5e7eb"]
+
+    # nós (label preto)
+    for n, nivel in visited.items():
+        c = cores[nivel % len(cores)]
+        label = f"{n} (nível {nivel})"
+        net.add_node(n, label=label, color=c, font={"color": "#111827"})
+
+    # arestas apenas da árvore BFS (aproximação): u->v se v nível = u nível + 1
+    for v, nivel_v in visited.items():
+        for u in G.get_vizinhos(v):
+            if u in visited and visited[u] == nivel_v - 1:
+                net.add_edge(u, v, color="#94a3b8")
+
+    net.set_options("""{
+      "nodes": { "font": { "size": 16, "color": "#111827" } },
+      "edges": { "color": { "color": "#94a3b8" } },
+      "physics": { "stabilization": true }
+    }""")
+    net.write_html(out_html)
+    return out_html
+
+
+
+def bfs_layers_visual_png(G, source: str, out_png: str) -> None:
+    """Árvore BFS em PNG com camadas (layout linear por camada)."""
+    if plt is None:
+        raise RuntimeError("matplotlib não instalado. pip install matplotlib")
+    os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
+
+    order, parent, depth = bfs_layers(G, source)
+
+    # agrupa por camada
+    layers: dict[int, list[str]] = {}
+    for n in order:
+        layers.setdefault(depth[n], []).append(n)
+
+    # coordenadas em grid por camada
+    xs, ys, labels = [], [], []
+    x = 0
+    positions = {}
+    for d in sorted(layers.keys()):
+        row = layers[d]
+        for i, n in enumerate(row):
+            positions[n] = (x + i, -d)
+            xs.append(x + i)
+            ys.append(-d)
+            labels.append(n)
+        x += len(row) + 1  # separação entre camadas
+
+    plt.figure(figsize=(max(10, len(order) * 0.6), 6))
+    # arestas da árvore
+    for n, p in parent.items():
+        if p is None:
+            continue
+        x1, y1 = positions[p]
+        x2, y2 = positions[n]
+        plt.plot([x1, x2], [y1, y2], color="#ef4444", linewidth=3)
+
+    # nós
+    plt.scatter([positions[n][0] for n in order],
+                [positions[n][1] for n in order], s=250, zorder=3)
+    for n in order:
+        x, y = positions[n]
+        plt.text(x, y + 0.10, n, ha="center", va="bottom", fontsize=9)
+
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(out_png, dpi=150)
+    plt.close()
+
+def _hex_from_rgb(r, g, b) -> str:
+    return "#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255))
+
+def degree_colormap_html(G, outfile: str) -> None:
+    """
+    Cria um grafo interativo (PyVis) onde a cor do nó representa o grau:
+    quanto maior o grau, mais intensa (vermelho). Rótulos = nome (grau).
+    """
+    if Network is None:
+        raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
+
+    os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
+
+    # graus normalizados
+    graus = {n: G.get_grau(n) for n in G.nodes.keys()}
+    gmin, gmax = (min(graus.values(), default=0), max(graus.values(), default=1))
+    span = max(1, gmax - gmin)
+
+    net = Network(height="720px", width="100%", notebook=False, directed=False)
+
+    for n, g in graus.items():
+        t = (g - gmin) / span  # 0..1
+        # mapa simples: vermelho com saturação/valor crescendo
+        r, g_, b = hsv_to_rgb(0.0, 0.35 + 0.65*t, 0.6 + 0.35*t)
+        color = _hex_from_rgb(r, g_, b)
+        net.add_node(n, label=f"{n} ({G.get_grau(n)})", color=color, font={"color":"#111827"})
+
+    # arestas existentes
+    for (u, v) in G.edges:
+        net.add_edge(u, v, color="#64748b")
+
+    net.set_options('{"nodes":{"font":{"size":18,"color":"#111827"}}, ... }')
+    net.write_html(outfile)
+
+def degree_colormap_png(G, outfile: str) -> None:
+    """
+    Versão estática (PNG) com layout circular; cor ~ grau.
+    """
+    if plt is None:
+        raise RuntimeError("Matplotlib não está instalado. Use: pip install matplotlib")
+
+    os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
+
+    import math
+    nodes = list(G.nodes.keys())
+    n = len(nodes)
+    if n == 0:
+        raise ValueError("Grafo vazio.")
+
+    # posições circulares
+    xs, ys = [], []
+    for i in range(n):
+        ang = 2*math.pi*i/n
+        xs.append(math.cos(ang))
+        ys.append(math.sin(ang))
+
+    degs = [G.get_grau(v) for v in nodes]
+    gmin, gmax = (min(degs), max(degs) if max(degs) > 0 else 1)
+    span = max(1, gmax - gmin)
+
+    colors = []
+    for d in degs:
+        t = (d - gmin) / span
+        r, g_, b = hsv_to_rgb(0.0, 0.35 + 0.65*t, 0.6 + 0.35*t)
+        colors.append((r, g_, b))
+
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.scatter(xs, ys, s=200, c=colors, edgecolor="#111827", linewidth=0.6, zorder=3)
+
+    # rótulos
+    for x, y, name, d in zip(xs, ys, nodes, degs):
+        ax.text(x, y+0.07, f"{name} ({d})", ha="center", va="bottom", fontsize=8)
+
+    # desenha algumas arestas (line segments)
+    pos = {v: (x, y) for v, x, y in zip(nodes, xs, ys)}
+    for (u, v) in G.edges:
+        x1, y1 = pos[u]; x2, y2 = pos[v]
+        ax.plot([x1, x2], [y1, y2], color="#9ca3af", linewidth=0.6, zorder=1)
+
+    ax.set_axis_off()
+    plt.tight_layout()
+    plt.savefig(outfile, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+def _map_graus_from_csv(path_graus_csv: str) -> dict[str, int]:
+    import pandas as pd
+    df = pd.read_csv(path_graus_csv)
+    df["bairro"] = df["bairro"].astype(str)
+    df["grau"] = df["grau"].astype(int)
+    return dict(zip(df["bairro"], df["grau"]))
