@@ -1,0 +1,19 @@
+{
+  "origem": "Nova Descoberta",
+  "destino": "Boa Viagem (Setúbal)",
+  "caminho": [
+    "Nova Descoberta",
+    "Macaxeira",
+    "Apipucos",
+    "Caxanga",
+    "Varzea",
+    "Curado",
+    "Jardim Sao Paulo",
+    "Areias",
+    "Barro",
+    "Cohab",
+    "Ibura",
+    "Boa Viagem (Setúbal)"
+  ],
+  "custo": 11.0
+}
