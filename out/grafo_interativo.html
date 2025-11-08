@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Grafo Interativo — Bairros</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+        :root{
+        --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af;
+        --accent:#22d3ee; --edge:#475569; --edge-hi:#f79aa9;
+        --node:#60a5fa; --node-hi:#f43f5e; --found:#fbbf24;
+        }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
+    .wrap{display:grid;grid-template-rows:auto 1fr; height:100%;}
+    header{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;padding:.75rem 1rem;border-bottom:1px solid #1f2937;background:linear-gradient(180deg,#0b1222,#0f172a);position:sticky;top:0;z-index:5;}
+    header h1{font-size:1rem;margin:0;color:var(--muted);font-weight:600;letter-spacing:.2px}
+    .controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-left:auto}
+    .search{display:flex;align-items:center;gap:.5rem;background:var(--panel);border:1px solid #1f2937;border-radius:.6rem;padding:.35rem .6rem;}
+    .search input{background:transparent;border:0;outline:none;color:var(--ink);width:18rem;}
+    .btn{background:var(--panel);border:1px solid #1f2937;color:var(--ink);padding:.45rem .7rem;border-radius:.6rem;cursor:pointer;font-weight:600;transition:transform .04s ease, background .2s ease, border-color .2s ease;}
+    .btn:hover{transform:translateY(-1px);border-color:#374151}
+    .btn.accent{border-color:#0ea5e9;box-shadow:0 0 0 1px rgba(14,165,233,.25) inset}
+    .legend{display:flex;align-items:center;gap:.6rem;padding:.35rem .6rem;border:1px solid #1f2937;border-radius:.6rem;background:var(--panel);}
+    .key{display:flex;align-items:center;gap:.35rem;font-size:.9rem;color:var(--muted)}
+    .chip{width:.9rem;height:.9rem;border-radius:.2rem}
+    .stage{position:relative;overflow:hidden}
+    svg{width:100%;height:100%}
+    .link{stroke:var(--edge);stroke-opacity:.6}
+    .link.hi{stroke:var(--edge-hi);stroke-width:3;stroke-opacity:1}
+    .node{cursor:pointer}
+    .node circle{fill:var(--node);stroke:#0b1020;stroke-width:1.2}
+    .node.found circle{fill:var(--found)}
+    .node.hi circle{fill:var(--node-hi)}
+    .label{font-size:10px;pointer-events:none;fill:#cbd5e1;opacity:.9}
+    .tooltip{position:absolute;pointer-events:none;z-index:10;min-width:220px;background:#0b1020cc;border:1px solid #1f2937;border-radius:.6rem;padding:.6rem .75rem;box-shadow:0 6px 22px rgba(0,0,0,.35);backdrop-filter:blur(6px);color:#e5e7eb;font-size:.9rem;display:none;}
+    .tooltip h3{margin:.1rem 0 .4rem 0;font-size:1rem;color:#fff}
+    .tooltip .row{display:flex;justify-content:space-between;gap:1rem;color:var(--muted)}
+    .tooltip .row b{color:#e5e7eb}
+    .note{font-size:.85rem;color:var(--muted);margin-left:.25rem}
+    .overlay{position:absolute;inset:60px 16px 16px 16px;border:1px solid #374151;border-radius:10px;background:rgba(11,16,32,.85);backdrop-filter:blur(6px);padding:16px;color:#e5e7eb;overflow:auto}
+    .overlay pre{white-space:pre-wrap}
+  </style>
+</head>
+    <body>
+    <div class="wrap">
+    <header>
+        <h1>Grafo Interativo de Bairros <span class="note">(arraste, role para zoom)</span></h1>
+        <div class="controls">
+        <div class="search" title="Buscar bairro">
+            🔎
+            <input id="search" placeholder="Buscar bairro (ex.: Boa Viagem, Setúbal, Nova Descoberta)" />
+        </div>
+        <button id="btnReset" class="btn" title="Limpar seleção/zoom">Limpar</button>
+        <button id="btnPath" class="btn accent" title="Realçar caminho fixo">Realçar: Nova Descoberta → Boa Viagem (Setúbal)</button>
+        <div class="legend" title="Legenda">
+            <div class="key"><span class="chip" style="background:var(--node)"></span> Nó</div>
+            <div class="key"><span class="chip" style="background:var(--found)"></span> Encontrado</div>
+            <div class="key"><span class="chip" style="background:var(--node-hi)"></span> Caminho</div>
+            <div class="key"><span class="chip" style="background:var(--edge-hi)"></span> Aresta do caminho</div>
+        </div>
+        </div>
+    </header>
+
+    <div class="stage" id="stage">
+        <svg id="svg"></svg>
+        <div id="tooltip" class="tooltip"></div>
+    </div>
+    </div>
+
+    <!-- D3.js -->
+        <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+        <script>
+        (async function(){
+        const byId = (id) => document.getElementById(id);
+        const stage = byId('stage');
+        const svg = d3.select('#svg');
+        const g = svg.append('g');
+        const tooltip = byId('tooltip');
+
+        const resolveName = (n) => n.label ?? n.nome ?? n.bairro ?? n.id ?? String(n);
+        const numberFmt = (v) => (v==null || Number.isNaN(+v)) ? "—" : (+v).toLocaleString("pt-BR",{maximumFractionDigits:3});
+
+        function overlay(msg){
+            const el = document.createElement('div');
+            el.className='overlay';
+            el.innerHTML = `<b>Aviso</b><br><pre>${msg}</pre>`;
+            stage.appendChild(el);
+        }
+
+        async function fetchJSON(url){
+            const r = await fetch(url,{cache:'no-store'});
+            if (!r.ok) throw new Error(`${url} → ${r.status} ${r.statusText}`);
+            return r.json();
+        }
+
+        // Carrega o grafo completo (que você acabou de copiar)
+        let data = await fetchJSON('./json/grafo_bairros.json');
+
+        // Carrega o caminho fixo (se não existir, o botão avisa)
+        let pathFile = null;
+        try { pathFile = await fetchJSON('./json/percurso_nova_descoberta_setubal.json'); }
+        catch(e){ console.warn('Sem arquivo de percurso:', e); }
+
+        // Normaliza
+        data.nodes.forEach(n => n._name = resolveName(n));
+        data.links.forEach(l => { l.source = resolveName(l.source); l.target = resolveName(l.target); });
+        const nodeByName = new Map(data.nodes.map(n => [n._name, n]));
+
+        function computeDegrees(nodes, links){
+            const deg = new Map(nodes.map(n => [resolveName(n), 0]));
+            links.forEach(l=>{
+            const s = resolveName(l.source), t = resolveName(l.target);
+            if (deg.has(s)) deg.set(s, deg.get(s)+1);
+            if (deg.has(t)) deg.set(t, deg.get(t)+1);
+            });
+            return deg;
+        }
+        const degrees = computeDegrees(data.nodes, data.links);
+
+        // Simulação
+        const width = stage.clientWidth, height = stage.clientHeight || 720;
+        svg.attr('viewBox', [0,0,width,height]);
+
+        const sim = d3.forceSimulation(data.nodes)
+            .force('link', d3.forceLink(data.links).id(d=>d._name).distance(52).strength(.65))
+            .force('charge', d3.forceManyBody().strength(-130))
+            .force('center', d3.forceCenter(width/2, height/2))
+            .force('collide', d3.forceCollide().radius(d=>8 + Math.min(10, degrees.get(d._name)||0)));
+
+        // Desenho
+        const zoom = d3.zoom().scaleExtent([0.2, 6]).on('zoom', (ev)=>{ g.attr('transform', ev.transform); });
+        svg.call(zoom);
+
+        const link = g.append('g').attr('stroke-width',1.2).selectAll('line')
+            .data(data.links).join('line').attr('class','link');
+
+        const node = g.append('g').selectAll('g.node')
+            .data(data.nodes).join('g').attr('class','node')
+            .call(d3.drag()
+            .on('start', (ev,d)=>{ if(!ev.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+            .on('drag', (ev,d)=>{ d.fx=ev.x; d.fy=ev.y; })
+            .on('end',  (ev,d)=>{ if(!ev.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+            );
+
+        node.append('circle').attr('r', d => 5 + Math.min(8, (degrees.get(d._name)||0)/2 ));
+
+        const label = g.append('g').selectAll('text.label')
+            .data(data.nodes).join('text')
+            .attr('class','label')
+            .text(d => d._name);
+
+        sim.on('tick', ()=>{
+            link
+            .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+            node.attr('transform', d => `translate(${d.x},${d.y})`);
+            label.attr('x', d => d.x + 8).attr('y', d => d.y + 3);
+        });
+
+        // Tooltip
+        function showTip(html, x, y){
+            tooltip.innerHTML = html;
+            tooltip.style.display = 'block';
+            const pad = 12;
+            tooltip.style.left = (x + pad) + 'px';
+            tooltip.style.top  = (y + pad) + 'px';
+        }
+        function hideTip(){ tooltip.style.display = 'none'; }
+
+        node.on('mousemove', (ev, d)=>{
+            const mic = d.microrregiao ?? d['microrregião'] ?? '—';
+            const dens = (d.densidade_ego ?? d.densidadeEgo ?? d.densidade) ?? null;
+            const grau = d.grau ?? (degrees.get(d._name) ?? 0);
+            showTip(`
+            <h3>${d._name}</h3>
+            <div class="row"><span>Grau</span><b>${grau}</b></div>
+            <div class="row"><span>Microrregião</span><b>${mic ?? '—'}</b></div>
+            <div class="row"><span>densidade_ego</span><b>${numberFmt(dens)}</b></div>
+            `, ev.clientX, ev.clientY);
+        }).on('mouseleave', hideTip);
+
+        // Busca
+        const search = byId('search');
+        function clearFound(){ node.classed('found', false); }
+        function zoomToNode(n){
+            const t = d3.zoomIdentity.translate(width/2 - n.x*1.6, height/2 - n.y*1.6).scale(1.6);
+            svg.transition().duration(450).call(zoom.transform, t);
+        }
+        function findByQuery(q){
+            q = (q||'').trim().toLowerCase();
+            if (!q){ clearFound(); return; }
+            let found = data.nodes.find(n => n._name.toLowerCase() === q)
+                    || data.nodes.find(n => n._name.toLowerCase().includes(q));
+            if (found){
+            clearPathHighlight();
+            node.classed('found', d => d===found);
+            zoomToNode(found);
+            }
+        }
+        let debounceT=null;
+        search.addEventListener('input', ()=>{
+            clearTimeout(debounceT);
+            debounceT=setTimeout(()=>findByQuery(search.value), 180);
+        });
+
+        // Caminho fixo
+        const BTN_PATH = byId('btnPath');
+        const BTN_RESET = byId('btnReset');
+        let pathOn = false;
+
+        let pathNodes = [];
+        let pathEdges = new Set();
+        function makeLinkKey(a,b){ return a < b ? `${a}||${b}` : `${b}||${a}`; }
+
+        if (pathFile?.caminho?.length >= 2){
+            // normaliza cada rótulo do percurso para o nome real do grafo
+            const resolved = [];
+            for (const raw of pathFile.caminho){
+                const name = resolveToGraphName(raw, nodeByName);
+                if (name) resolved.push(name);
+            }
+            // elimina consecutivos iguais e mantém a sequência
+            for (let i=0;i<resolved.length;i++){
+                if (i === 0 || resolved[i] !== resolved[i-1]) pathNodes.push(resolved[i]);
+            }
+            // monta conjunto de arestas do caminho
+            pathEdges.clear();
+            for (let i=0;i<pathNodes.length-1;i++){
+                const a = pathNodes[i], b = pathNodes[i+1];
+                const key = (a < b) ? `${a}||${b}` : `${b}||${a}`;
+                pathEdges.add(key);
+            }
+        }
+
+        function applyPathHighlight(on){
+            node.classed('hi', d => on && pathNodes.includes(d._name));
+            link.classed('hi', l => on && pathEdges.has(linkKeyFromLink(l)));
+            if (on){
+            const pts = data.nodes.filter(n => pathNodes.includes(n._name));
+            if (pts.length){
+                const cx = d3.mean(pts, p=>p.x), cy = d3.mean(pts, p=>p.y);
+                const t = d3.zoomIdentity.translate(width/2 - cx*1.4, height/2 - cy*1.4).scale(1.4);
+                svg.transition().duration(500).call(zoom.transform, t);
+            }
+            }
+        }
+
+        // Retorna o "nome" de um nó/ligação em qualquer momento (string)
+        const linkKeyFromLink = (l) => {
+        const s = (l.source && (l.source._name || l.source.id || l.source.nome || l.source.bairro || l.source)) + '';
+        const t = (l.target && (l.target._name || l.target.id || l.target.nome || l.target.bairro || l.target)) + '';
+        const a = s < t ? s : t;
+        const b = s < t ? t : s;
+        return `${a}||${b}`;
+        };
+
+        // Encontra no grafo o nome "oficial" para um rótulo vindo do percurso
+        function resolveToGraphName(label, nodeByName){
+        if (!label) return null;
+        const q = String(label).trim();
+        if (nodeByName.has(q)) return q;
+        const strip = q.replace(/\s*\([^)]*\)\s*/g,'').trim();
+        if (nodeByName.has(strip)) return strip;
+        
+        const lower = q.toLowerCase();
+        for (const name of nodeByName.keys()){
+            if (name.toLowerCase() === lower) return name;
+        }
+        for (const name of nodeByName.keys()){
+            if (name.toLowerCase().includes(lower) || lower.includes(name.toLowerCase())) return name;
+        }
+        return null; 
+        }
+
+        function clearPathHighlight(){ applyPathHighlight(false); pathOn=false; BTN_PATH.classList.remove('accent'); }
+
+        BTN_PATH.addEventListener('click', ()=>{
+            if (!pathNodes.length){
+            alert('Arquivo de caminho não encontrado ou inválido em ./json/percurso_nova_descoberta_setubal.json');
+            return;
+            }
+            pathOn = !pathOn;
+            applyPathHighlight(pathOn);
+            BTN_PATH.classList.toggle('accent', pathOn);
+        });
+
+        BTN_RESET.addEventListener('click', ()=>{
+            search.value = '';
+            node.classed('found', false);
+            clearPathHighlight();
+            svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity);
+        });
+
+        svg.on('click', hideTip);
+        })();
+        </script>
+    </body>
+</html>

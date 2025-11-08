@@ -1,0 +1,1460 @@
+{
+  "nodes": [
+    {
+      "id": "Aflitos",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 2
+    },
+    {
+      "id": "Afogados",
+      "microrregiao": 5,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Agua Fria",
+      "microrregiao": 2,
+      "densidade_ego": 0.3888888888888889,
+      "grau": 8
+    },
+    {
+      "id": "Alto Do Mandu",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Alto Jose Bonifacio",
+      "microrregiao": 3,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Alto Jose Do Pinho",
+      "microrregiao": 3,
+      "densidade_ego": 0.3809523809523809,
+      "grau": 6
+    },
+    {
+      "id": "Alto Santa Teresinha",
+      "microrregiao": 2,
+      "densidade_ego": 0.5,
+      "grau": 3
+    },
+    {
+      "id": "Apipucos",
+      "microrregiao": 3,
+      "densidade_ego": 0.4666666666666667,
+      "grau": 5
+    },
+    {
+      "id": "Areias",
+      "microrregiao": 5,
+      "densidade_ego": 0.4666666666666667,
+      "grau": 5
+    },
+    {
+      "id": "Arruda",
+      "microrregiao": 2,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Barro",
+      "microrregiao": 5,
+      "densidade_ego": 0.5,
+      "grau": 3
+    },
+    {
+      "id": "Beberibe",
+      "microrregiao": 2,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Boa Viagem",
+      "microrregiao": 6,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Boa Vista",
+      "microrregiao": 1,
+      "densidade_ego": 0.4642857142857143,
+      "grau": 7
+    },
+    {
+      "id": "Bomba Do Hemeterio",
+      "microrregiao": 2,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Bongi",
+      "microrregiao": 5,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Brasilia Teimosa",
+      "microrregiao": 6,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Brejo Da Guabiraba",
+      "microrregiao": 3,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Brejo De Beberibe",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Cabanga",
+      "microrregiao": 1,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 2
+    },
+    {
+      "id": "Cacote",
+      "microrregiao": 5,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Cajueiro",
+      "microrregiao": 2,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Campina Do Barreto",
+      "microrregiao": 2,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Campo Grande",
+      "microrregiao": 2,
+      "densidade_ego": 0.5238095238095238,
+      "grau": 6
+    },
+    {
+      "id": "Casa Amarela",
+      "microrregiao": 3,
+      "densidade_ego": 0.3777777777777777,
+      "grau": 9
+    },
+    {
+      "id": "Casa Forte",
+      "microrregiao": 3,
+      "densidade_ego": 0.8,
+      "grau": 4
+    },
+    {
+      "id": "Caxanga",
+      "microrregiao": 4,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Cidade Universitaria",
+      "microrregiao": 4,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Coelhos",
+      "microrregiao": 1,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Cohab",
+      "microrregiao": 6,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Coqueiral",
+      "microrregiao": 5,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Cordeiro",
+      "microrregiao": 4,
+      "densidade_ego": 0.4666666666666667,
+      "grau": 5
+    },
+    {
+      "id": "Corrego Do Jenipapo",
+      "microrregiao": 3,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Curado",
+      "microrregiao": 5,
+      "densidade_ego": 0.4,
+      "grau": 5
+    },
+    {
+      "id": "Derby",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Dois Irmaos",
+      "microrregiao": 3,
+      "densidade_ego": 0.4,
+      "grau": 4
+    },
+    {
+      "id": "Dois Unidos",
+      "microrregiao": 2,
+      "densidade_ego": 1.0,
+      "grau": 2
+    },
+    {
+      "id": "Encruzilhada",
+      "microrregiao": 2,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 5
+    },
+    {
+      "id": "Engenho Do Meio",
+      "microrregiao": 4,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Espinheiro",
+      "microrregiao": 3,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Estancia",
+      "microrregiao": 5,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Fundao",
+      "microrregiao": 2,
+      "densidade_ego": 0.8,
+      "grau": 4
+    },
+    {
+      "id": "Gracas",
+      "microrregiao": 3,
+      "densidade_ego": 0.4666666666666667,
+      "grau": 5
+    },
+    {
+      "id": "Guabiraba",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Hipodromo",
+      "microrregiao": 2,
+      "densidade_ego": 1.0,
+      "grau": 3
+    },
+    {
+      "id": "Ibura",
+      "microrregiao": 6,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Ilha Do Leite",
+      "microrregiao": 1,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Ilha Do Retiro",
+      "microrregiao": 4,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Ilha Joana Bezerra",
+      "microrregiao": 1,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Imbiribeira",
+      "microrregiao": 6,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Ipsep",
+      "microrregiao": 6,
+      "densidade_ego": 1.0,
+      "grau": 2
+    },
+    {
+      "id": "Iputinga",
+      "microrregiao": 4,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Jaqueira",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Jardim Sao Paulo",
+      "microrregiao": 5,
+      "densidade_ego": 0.5,
+      "grau": 4
+    },
+    {
+      "id": "Jiquia",
+      "microrregiao": 5,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Jordao",
+      "microrregiao": 6,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Linha Do Tiro",
+      "microrregiao": 2,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Macaxeira",
+      "microrregiao": 3,
+      "densidade_ego": 0.6,
+      "grau": 4
+    },
+    {
+      "id": "Madalena",
+      "microrregiao": 4,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Mangabeira",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Mangueira",
+      "microrregiao": 5,
+      "densidade_ego": 0.8,
+      "grau": 4
+    },
+    {
+      "id": "Monteiro",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Morro Da Conceicao",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Mustardinha",
+      "microrregiao": 5,
+      "densidade_ego": 0.8,
+      "grau": 4
+    },
+    {
+      "id": "Nova Descoberta",
+      "microrregiao": 3,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Paissandu",
+      "microrregiao": 1,
+      "densidade_ego": 0.5,
+      "grau": 4
+    },
+    {
+      "id": "Parnamirim",
+      "microrregiao": 3,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 5
+    },
+    {
+      "id": "Passarinho",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 2
+    },
+    {
+      "id": "Pau Ferro",
+      "microrregiao": null,
+      "densidade_ego": null,
+      "grau": null
+    },
+    {
+      "id": "Peixinhos",
+      "microrregiao": 2,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Pina",
+      "microrregiao": 6,
+      "densidade_ego": 0.5,
+      "grau": 4
+    },
+    {
+      "id": "Poco",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Ponto De Parada",
+      "microrregiao": 2,
+      "densidade_ego": 0.8,
+      "grau": 4
+    },
+    {
+      "id": "Porto Da Madeira",
+      "microrregiao": 2,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Prado",
+      "microrregiao": 4,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Recife",
+      "microrregiao": 1,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Rosarinho",
+      "microrregiao": 2,
+      "densidade_ego": 1.0,
+      "grau": 2
+    },
+    {
+      "id": "San Martin",
+      "microrregiao": 5,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Sancho",
+      "microrregiao": 5,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Santana",
+      "microrregiao": 3,
+      "densidade_ego": 0.7,
+      "grau": 4
+    },
+    {
+      "id": "Santo Amaro",
+      "microrregiao": 1,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Santo Antonio",
+      "microrregiao": 1,
+      "densidade_ego": 0.6190476190476191,
+      "grau": 6
+    },
+    {
+      "id": "Sao Jose",
+      "microrregiao": 1,
+      "densidade_ego": 0.4285714285714285,
+      "grau": 6
+    },
+    {
+      "id": "Sitio Dos Pintos",
+      "microrregiao": 3,
+      "densidade_ego": 1.0,
+      "grau": 1
+    },
+    {
+      "id": "Soledade",
+      "microrregiao": 1,
+      "densidade_ego": 1.0,
+      "grau": 3
+    },
+    {
+      "id": "Tamarineira",
+      "microrregiao": 3,
+      "densidade_ego": 0.6,
+      "grau": 5
+    },
+    {
+      "id": "Tejipio",
+      "microrregiao": 5,
+      "densidade_ego": 0.5,
+      "grau": 4
+    },
+    {
+      "id": "Torre",
+      "microrregiao": 4,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Torreao",
+      "microrregiao": 2,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 3
+    },
+    {
+      "id": "Torroes",
+      "microrregiao": 4,
+      "densidade_ego": 0.6666666666666666,
+      "grau": 2
+    },
+    {
+      "id": "Toto",
+      "microrregiao": 5,
+      "densidade_ego": 0.8333333333333334,
+      "grau": 3
+    },
+    {
+      "id": "Varzea",
+      "microrregiao": 4,
+      "densidade_ego": 0.6,
+      "grau": 4
+    },
+    {
+      "id": "Vasco Da Gama",
+      "microrregiao": 3,
+      "densidade_ego": 0.5333333333333333,
+      "grau": 5
+    },
+    {
+      "id": "Zumbi",
+      "microrregiao": 4,
+      "densidade_ego": 0.8,
+      "grau": 4
+    }
+  ],
+  "links": [
+    {
+      "source": "Mustardinha",
+      "target": "Bongi",
+      "weight": 1.0
+    },
+    {
+      "source": "Agua Fria",
+      "target": "Linha Do Tiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Tejipio",
+      "target": "Jardim Sao Paulo",
+      "weight": 1.0
+    },
+    {
+      "source": "Cidade Universitaria",
+      "target": "Iputinga",
+      "weight": 1.0
+    },
+    {
+      "source": "Estancia",
+      "target": "Jiquia",
+      "weight": 1.0
+    },
+    {
+      "source": "Torroes",
+      "target": "Cordeiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Sancho",
+      "target": "Curado",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Jose Bonifacio",
+      "target": "Vasco Da Gama",
+      "weight": 1.0
+    },
+    {
+      "source": "Afogados",
+      "target": "Bongi",
+      "weight": 1.0
+    },
+    {
+      "source": "Sao Jose",
+      "target": "Santo Antonio",
+      "weight": 1.0
+    },
+    {
+      "source": "Tejipio",
+      "target": "Sancho",
+      "weight": 1.0
+    },
+    {
+      "source": "Morro Da Conceicao",
+      "target": "Alto Jose Bonifacio",
+      "weight": 1.0
+    },
+    {
+      "source": "Peixinhos",
+      "target": "Campina Do Barreto",
+      "weight": 1.0
+    },
+    {
+      "source": "Morro Da Conceicao",
+      "target": "Vasco Da Gama",
+      "weight": 1.0
+    },
+    {
+      "source": "Areias",
+      "target": "Jiquia",
+      "weight": 1.0
+    },
+    {
+      "source": "Coelhos",
+      "target": "Boa Vista",
+      "weight": 1.0
+    },
+    {
+      "source": "Prado",
+      "target": "Zumbi",
+      "weight": 1.0
+    },
+    {
+      "source": "Macaxeira",
+      "target": "Nova Descoberta",
+      "weight": 1.0
+    },
+    {
+      "source": "Fundao",
+      "target": "Agua Fria",
+      "weight": 1.0
+    },
+    {
+      "source": "San Martin",
+      "target": "Bongi",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Viagem",
+      "target": "Imbiribeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Ibura",
+      "target": "Ipsep",
+      "weight": 1.0
+    },
+    {
+      "source": "Brejo De Beberibe",
+      "target": "Brejo Da Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Areias",
+      "target": "Estancia",
+      "weight": 1.0
+    },
+    {
+      "source": "Afogados",
+      "target": "Mustardinha",
+      "weight": 1.0
+    },
+    {
+      "source": "Parnamirim",
+      "target": "Tamarineira",
+      "weight": 1.0
+    },
+    {
+      "source": "Soledade",
+      "target": "Santo Amaro",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Vista",
+      "target": "Santo Amaro",
+      "weight": 1.0
+    },
+    {
+      "source": "Nova Descoberta",
+      "target": "Brejo De Beberibe",
+      "weight": 1.0
+    },
+    {
+      "source": "Torre",
+      "target": "Zumbi",
+      "weight": 1.0
+    },
+    {
+      "source": "Agua Fria",
+      "target": "Porto Da Madeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Jardim Sao Paulo",
+      "target": "Estancia",
+      "weight": 1.0
+    },
+    {
+      "source": "Tejipio",
+      "target": "Coqueiral",
+      "weight": 1.0
+    },
+    {
+      "source": "Iputinga",
+      "target": "Caxanga",
+      "weight": 1.0
+    },
+    {
+      "source": "Torreao",
+      "target": "Campo Grande",
+      "weight": 1.0
+    },
+    {
+      "source": "Imbiribeira",
+      "target": "Ipsep",
+      "weight": 1.0
+    },
+    {
+      "source": "Afogados",
+      "target": "Mangueira",
+      "weight": 1.0
+    },
+    {
+      "source": "Torroes",
+      "target": "Engenho Do Meio",
+      "weight": 1.0
+    },
+    {
+      "source": "Apipucos",
+      "target": "Dois Irmaos",
+      "weight": 1.0
+    },
+    {
+      "source": "Barro",
+      "target": "Areias",
+      "weight": 1.0
+    },
+    {
+      "source": "Campina Do Barreto",
+      "target": "Cajueiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Nova Descoberta",
+      "target": "Brejo Da Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Monteiro",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Jose Do Pinho",
+      "target": "Morro Da Conceicao",
+      "weight": 1.0
+    },
+    {
+      "source": "Iputinga",
+      "target": "Cordeiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Macaxeira",
+      "target": "Corrego Do Jenipapo",
+      "weight": 1.0
+    },
+    {
+      "source": "Fundao",
+      "target": "Porto Da Madeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Jardim Sao Paulo",
+      "target": "Curado",
+      "weight": 1.0
+    },
+    {
+      "source": "Cidade Universitaria",
+      "target": "Varzea",
+      "weight": 1.0
+    },
+    {
+      "source": "Agua Fria",
+      "target": "Beberibe",
+      "weight": 1.0
+    },
+    {
+      "source": "Varzea",
+      "target": "Iputinga",
+      "weight": 1.0
+    },
+    {
+      "source": "Imbiribeira",
+      "target": "Ibura",
+      "weight": 1.0
+    },
+    {
+      "source": "Barro",
+      "target": "Tejipio",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Viagem",
+      "target": "Pina",
+      "weight": 1.0
+    },
+    {
+      "source": "Jordao",
+      "target": "Ibura",
+      "weight": 1.0
+    },
+    {
+      "source": "Poco",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Engenho Do Meio",
+      "target": "Iputinga",
+      "weight": 1.0
+    },
+    {
+      "source": "Derby",
+      "target": "Gracas",
+      "weight": 1.0
+    },
+    {
+      "source": "Toto",
+      "target": "Curado",
+      "weight": 1.0
+    },
+    {
+      "source": "Coqueiral",
+      "target": "Toto",
+      "weight": 1.0
+    },
+    {
+      "source": "Encruzilhada",
+      "target": "Ponto De Parada",
+      "weight": 1.0
+    },
+    {
+      "source": "Fundao",
+      "target": "Cajueiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Cohab",
+      "target": "Ibura",
+      "weight": 1.0
+    },
+    {
+      "source": "Jiquia",
+      "target": "San Martin",
+      "weight": 1.0
+    },
+    {
+      "source": "Gracas",
+      "target": "Aflitos",
+      "weight": 1.0
+    },
+    {
+      "source": "Porto Da Madeira",
+      "target": "Beberibe",
+      "weight": 1.0
+    },
+    {
+      "source": "Gracas",
+      "target": "Jaqueira",
+      "weight": 1.0
+    },
+    {
+      "source": "Hipodromo",
+      "target": "Ponto De Parada",
+      "weight": 1.0
+    },
+    {
+      "source": "Arruda",
+      "target": "Agua Fria",
+      "weight": 1.0
+    },
+    {
+      "source": "Bomba Do Hemeterio",
+      "target": "Agua Fria",
+      "weight": 1.0
+    },
+    {
+      "source": "Madalena",
+      "target": "Prado",
+      "weight": 1.0
+    },
+    {
+      "source": "Mustardinha",
+      "target": "San Martin",
+      "weight": 1.0
+    },
+    {
+      "source": "Pina",
+      "target": "Brasilia Teimosa",
+      "weight": 1.0
+    },
+    {
+      "source": "Cajueiro",
+      "target": "Porto Da Madeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Vasco Da Gama",
+      "target": "Nova Descoberta",
+      "weight": 1.0
+    },
+    {
+      "source": "Poco",
+      "target": "Casa Forte",
+      "weight": 1.0
+    },
+    {
+      "source": "Mangabeira",
+      "target": "Alto Jose Do Pinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Campina Do Barreto",
+      "target": "Fundao",
+      "weight": 1.0
+    },
+    {
+      "source": "Nova Descoberta",
+      "target": "Corrego Do Jenipapo",
+      "weight": 1.0
+    },
+    {
+      "source": "Dois Irmaos",
+      "target": "Brejo Da Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Viagem",
+      "target": "Ibura",
+      "weight": 1.0
+    },
+    {
+      "source": "Cacote",
+      "target": "Areias",
+      "weight": 1.0
+    },
+    {
+      "source": "Jaqueira",
+      "target": "Parnamirim",
+      "weight": 1.0
+    },
+    {
+      "source": "Engenho Do Meio",
+      "target": "Cidade Universitaria",
+      "weight": 1.0
+    },
+    {
+      "source": "Afogados",
+      "target": "Jiquia",
+      "weight": 1.0
+    },
+    {
+      "source": "Paissandu",
+      "target": "Ilha Do Leite",
+      "weight": 1.0
+    },
+    {
+      "source": "Arruda",
+      "target": "Bomba Do Hemeterio",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Do Retiro",
+      "target": "Madalena",
+      "weight": 1.0
+    },
+    {
+      "source": "Jordao",
+      "target": "Cohab",
+      "weight": 1.0
+    },
+    {
+      "source": "Cabanga",
+      "target": "Sao Jose",
+      "weight": 1.0
+    },
+    {
+      "source": "Zumbi",
+      "target": "Cordeiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Encruzilhada",
+      "target": "Hipodromo",
+      "weight": 1.0
+    },
+    {
+      "source": "Prado",
+      "target": "Cordeiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Casa Amarela",
+      "target": "Morro Da Conceicao",
+      "weight": 1.0
+    },
+    {
+      "source": "Coelhos",
+      "target": "Ilha Do Leite",
+      "weight": 1.0
+    },
+    {
+      "source": "Encruzilhada",
+      "target": "Rosarinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Poco",
+      "target": "Monteiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Hipodromo",
+      "target": "Campo Grande",
+      "weight": 1.0
+    },
+    {
+      "source": "Torre",
+      "target": "Cordeiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Arruda",
+      "target": "Campina Do Barreto",
+      "weight": 1.0
+    },
+    {
+      "source": "Arruda",
+      "target": "Peixinhos",
+      "weight": 1.0
+    },
+    {
+      "source": "Parnamirim",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Santo Antonio",
+      "target": "Boa Vista",
+      "weight": 1.0
+    },
+    {
+      "source": "Vasco Da Gama",
+      "target": "Brejo De Beberibe",
+      "weight": 1.0
+    },
+    {
+      "source": "Linha Do Tiro",
+      "target": "Beberibe",
+      "weight": 1.0
+    },
+    {
+      "source": "Mangueira",
+      "target": "Mustardinha",
+      "weight": 1.0
+    },
+    {
+      "source": "Soledade",
+      "target": "Boa Vista",
+      "weight": 1.0
+    },
+    {
+      "source": "Casa Amarela",
+      "target": "Alto Do Mandu",
+      "weight": 1.0
+    },
+    {
+      "source": "Ponto De Parada",
+      "target": "Rosarinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Encruzilhada",
+      "target": "Campo Grande",
+      "weight": 1.0
+    },
+    {
+      "source": "Madalena",
+      "target": "Torre",
+      "weight": 1.0
+    },
+    {
+      "source": "Madalena",
+      "target": "Zumbi",
+      "weight": 1.0
+    },
+    {
+      "source": "Linha Do Tiro",
+      "target": "Dois Unidos",
+      "weight": 1.0
+    },
+    {
+      "source": "Gracas",
+      "target": "Espinheiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Casa Forte",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Joana Bezerra",
+      "target": "Sao Jose",
+      "weight": 1.0
+    },
+    {
+      "source": "Brejo De Beberibe",
+      "target": "Passarinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Do Retiro",
+      "target": "Prado",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Do Leite",
+      "target": "Boa Vista",
+      "weight": 1.0
+    },
+    {
+      "source": "Tamarineira",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Tamarineira",
+      "target": "Alto Jose Do Pinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Jaqueira",
+      "target": "Tamarineira",
+      "weight": 1.0
+    },
+    {
+      "source": "Espinheiro",
+      "target": "Aflitos",
+      "weight": 1.0
+    },
+    {
+      "source": "Parnamirim",
+      "target": "Casa Forte",
+      "weight": 1.0
+    },
+    {
+      "source": "Campo Grande",
+      "target": "Arruda",
+      "weight": 1.0
+    },
+    {
+      "source": "Parnamirim",
+      "target": "Santana",
+      "weight": 1.0
+    },
+    {
+      "source": "Paissandu",
+      "target": "Boa Vista",
+      "weight": 1.0
+    },
+    {
+      "source": "Santana",
+      "target": "Casa Forte",
+      "weight": 1.0
+    },
+    {
+      "source": "Coelhos",
+      "target": "Santo Antonio",
+      "weight": 1.0
+    },
+    {
+      "source": "Santana",
+      "target": "Poco",
+      "weight": 1.0
+    },
+    {
+      "source": "Apipucos",
+      "target": "Monteiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Torreao",
+      "target": "Encruzilhada",
+      "weight": 1.0
+    },
+    {
+      "source": "San Martin",
+      "target": "Curado",
+      "weight": 1.0
+    },
+    {
+      "source": "Coqueiral",
+      "target": "Sancho",
+      "weight": 1.0
+    },
+    {
+      "source": "Campina Do Barreto",
+      "target": "Agua Fria",
+      "weight": 1.0
+    },
+    {
+      "source": "Apipucos",
+      "target": "Alto Do Mandu",
+      "weight": 1.0
+    },
+    {
+      "source": "Jiquia",
+      "target": "Mangueira",
+      "weight": 1.0
+    },
+    {
+      "source": "Casa Amarela",
+      "target": "Vasco Da Gama",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Do Mandu",
+      "target": "Macaxeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Monteiro",
+      "target": "Alto Do Mandu",
+      "weight": 1.0
+    },
+    {
+      "source": "Campo Grande",
+      "target": "Ponto De Parada",
+      "weight": 1.0
+    },
+    {
+      "source": "Varzea",
+      "target": "Caxanga",
+      "weight": 1.0
+    },
+    {
+      "source": "Mangueira",
+      "target": "San Martin",
+      "weight": 1.0
+    },
+    {
+      "source": "Gracas",
+      "target": "Tamarineira",
+      "weight": 1.0
+    },
+    {
+      "source": "Sancho",
+      "target": "Toto",
+      "weight": 1.0
+    },
+    {
+      "source": "Santo Antonio",
+      "target": "Recife",
+      "weight": 1.0
+    },
+    {
+      "source": "Sao Jose",
+      "target": "Recife",
+      "weight": 1.0
+    },
+    {
+      "source": "Sao Jose",
+      "target": "Coelhos",
+      "weight": 1.0
+    },
+    {
+      "source": "Corrego Do Jenipapo",
+      "target": "Brejo Da Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Campo Grande",
+      "target": "Peixinhos",
+      "weight": 1.0
+    },
+    {
+      "source": "Sitio Dos Pintos",
+      "target": "Dois Irmaos",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Joana Bezerra",
+      "target": "Paissandu",
+      "weight": 1.0
+    },
+    {
+      "source": "Jaqueira",
+      "target": "Santana",
+      "weight": 1.0
+    },
+    {
+      "source": "Apipucos",
+      "target": "Macaxeira",
+      "weight": 1.0
+    },
+    {
+      "source": "Passarinho",
+      "target": "Brejo Da Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Joana Bezerra",
+      "target": "Coelhos",
+      "weight": 1.0
+    },
+    {
+      "source": "Imbiribeira",
+      "target": "Pina",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Viagem",
+      "target": "Jordao",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Jose Do Pinho",
+      "target": "Casa Amarela",
+      "weight": 1.0
+    },
+    {
+      "source": "Santo Antonio",
+      "target": "Santo Amaro",
+      "weight": 1.0
+    },
+    {
+      "source": "Jardim Sao Paulo",
+      "target": "Areias",
+      "weight": 1.0
+    },
+    {
+      "source": "Recife",
+      "target": "Santo Amaro",
+      "weight": 1.0
+    },
+    {
+      "source": "Santo Antonio",
+      "target": "Soledade",
+      "weight": 1.0
+    },
+    {
+      "source": "Beberibe",
+      "target": "Dois Unidos",
+      "weight": 1.0
+    },
+    {
+      "source": "Dois Irmaos",
+      "target": "Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Caxanga",
+      "target": "Apipucos",
+      "weight": 1.0
+    },
+    {
+      "source": "Cabanga",
+      "target": "Pina",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Jose Do Pinho",
+      "target": "Bomba Do Hemeterio",
+      "weight": 1.0
+    },
+    {
+      "source": "Santo Amaro",
+      "target": "Torreao",
+      "weight": 1.0
+    },
+    {
+      "source": "Curado",
+      "target": "Varzea",
+      "weight": 1.0
+    },
+    {
+      "source": "Cohab",
+      "target": "Barro",
+      "weight": 1.0
+    },
+    {
+      "source": "Afogados",
+      "target": "Sao Jose",
+      "weight": 1.0
+    },
+    {
+      "source": "Boa Vista",
+      "target": "Espinheiro",
+      "weight": 1.0
+    },
+    {
+      "source": "Ilha Do Retiro",
+      "target": "Paissandu",
+      "weight": 1.0
+    },
+    {
+      "source": "Pau Ferro",
+      "target": "Guabiraba",
+      "weight": 1.0
+    },
+    {
+      "source": "Agua Fria",
+      "target": "Alto Santa Teresinha",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Santa Teresinha",
+      "target": "Alto Jose Do Pinho",
+      "weight": 1.0
+    },
+    {
+      "source": "Alto Santa Teresinha",
+      "target": "Alto Jose Bonifacio",
+      "weight": 1.0
+    }
+  ]
+}
