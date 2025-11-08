@@ -136,13 +136,18 @@ def plot_degree_histogram(path_graus_csv: str, out_png: str) -> str:
     os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
 
     df = pd.read_csv(path_graus_csv)
-    graus = df["grau"].tolist()
+    graus = df["grau"].astype(int).tolist()
 
-    # bins adaptativos: entre 8 e 15
-    bins = max(8, min(15, int(np.sqrt(len(graus)) + 2)))
+    if not graus:
+        raise ValueError("graus.csv está vazio.")
+
+    gmin, gmax = int(min(graus)), int(max(graus))
+    # bins alinhados em inteiros (barras centradas nos valores 0,1,2,...)
+    bins = np.arange(gmin - 0.5, gmax + 1.5, 1)
 
     plt.figure(figsize=(10, 5))
-    plt.hist(graus, bins=bins, edgecolor="#111827", linewidth=1.0)  # borda preta
+    plt.hist(graus, bins=bins, edgecolor="#111827", linewidth=1.0)
+    plt.xticks(range(gmin, gmax + 1))
     plt.title("Distribuição dos Graus")
     plt.xlabel("Grau")
     plt.ylabel("Frequência")
@@ -243,14 +248,14 @@ def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
     from collections import deque
 
     os.makedirs(os.path.dirname(out_html) or ".", exist_ok=True)
-    net = Network(height="720px", width="100%", notebook=False, directed=True)
+    net = Network(height="720px", width="100%", notebook=False, directed=False)
 
-    # BFS simples sobre a estrutura do seu Graph
     if raiz not in G.nodes:
         raise ValueError(f"Nó raiz '{raiz}' não existe no grafo.")
-    q = deque([raiz])
-    visited = {raiz: 0}  # nível
 
+    # BFS simples
+    q = deque([raiz])
+    visited = {raiz: 0}
     while q:
         u = q.popleft()
         for v in G.get_vizinhos(u):
@@ -258,27 +263,35 @@ def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
                 visited[v] = visited[u] + 1
                 q.append(v)
 
-    # paleta por nível
     cores = ["#fca5a5","#fdba74","#fde68a","#bbf7d0","#a7f3d0",
              "#93c5fd","#c4b5fd","#fbcfe8","#fecdd3","#e5e7eb"]
 
-    # nós (label preto)
+    grau = {n: G.get_grau(n) for n in G.nodes.keys()}
+
     for n, nivel in visited.items():
         c = cores[nivel % len(cores)]
-        label = f"{n} (nível {nivel})"
-        net.add_node(n, label=label, color=c, font={"color": "#111827"})
+        net.add_node(
+            n,
+            label=f"{n} (nível {nivel})",
+            title=f"grau = {grau.get(n,0)} · nível = {nivel}",
+            color=c,
+            font={"color": "#111827"}  # PRETO
+        )
 
-    # arestas apenas da árvore BFS (aproximação): u->v se v nível = u nível + 1
+    # arestas apenas entre níveis consecutivos (árvore BFS)
     for v, nivel_v in visited.items():
         for u in G.get_vizinhos(v):
             if u in visited and visited[u] == nivel_v - 1:
                 net.add_edge(u, v, color="#94a3b8")
 
-    net.set_options("""{
+    net.set_options("""
+    {
       "nodes": { "font": { "size": 16, "color": "#111827" } },
       "edges": { "color": { "color": "#94a3b8" } },
+      "interaction": { "hover": true },
       "physics": { "stabilization": true }
-    }""")
+    }
+    """)
     net.write_html(out_html)
     return out_html
 
@@ -335,34 +348,41 @@ def _hex_from_rgb(r, g, b) -> str:
     return "#{:02x}{:02x}{:02x}".format(int(r*255), int(g*255), int(b*255))
 
 def degree_colormap_html(G, outfile: str) -> None:
-    """
-    Cria um grafo interativo (PyVis) onde a cor do nó representa o grau:
-    quanto maior o grau, mais intensa (vermelho). Rótulos = nome (grau).
-    """
     if Network is None:
         raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
 
     os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
 
-    # graus normalizados
     graus = {n: G.get_grau(n) for n in G.nodes.keys()}
-    gmin, gmax = (min(graus.values(), default=0), max(graus.values(), default=1))
+    gmin = min(graus.values(), default=0)
+    gmax = max(graus.values(), default=1)
     span = max(1, gmax - gmin)
 
     net = Network(height="720px", width="100%", notebook=False, directed=False)
 
     for n, g in graus.items():
         t = (g - gmin) / span  # 0..1
-        # mapa simples: vermelho com saturação/valor crescendo
         r, g_, b = hsv_to_rgb(0.0, 0.35 + 0.65*t, 0.6 + 0.35*t)
         color = _hex_from_rgb(r, g_, b)
-        net.add_node(n, label=f"{n} ({G.get_grau(n)})", color=color, font={"color":"#111827"})
+        net.add_node(
+            n,
+            label=f"{n} ({g})",
+            title=f"grau = {g}",
+            color=color,
+            font={"color": "#111827"}  # PRETO
+        )
 
-    # arestas existentes
     for (u, v) in G.edges:
         net.add_edge(u, v, color="#64748b")
 
-    net.set_options('{"nodes":{"font":{"size":18,"color":"#111827"}}, ... }')
+    net.set_options("""
+    {
+      "nodes": { "font": { "size": 18, "color": "#111827" } },
+      "edges": { "color": { "color": "#64748b" } },
+      "interaction": { "hover": true },
+      "physics": { "stabilization": true }
+    }
+    """)
     net.write_html(outfile)
 
 def degree_colormap_png(G, outfile: str) -> None:

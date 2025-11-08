@@ -1,4 +1,0 @@
-- Histograma: mostra a concentração de graus; cauda indica possíveis hubs.
-- Densidade por microrregião: evidencia áreas estruturalmente mais conectadas.
-- Top-10 por grau: destaca o núcleo de maior conectividade (ordenação explícita).
-- BFS (Boa Vista): visualiza camadas de alcance a partir do polo escolhido.

@@ -1,0 +1,5 @@
+- Histograma: barras centradas em graus inteiros, expondo concentração e possíveis hubs.
+- Densidade por microrregião: compara coesão local; picos indicam sub-redes mais conectadas.
+- Top-10 por grau: ordenação encadeada evidencia o núcleo estrutural (maior capacidade de difusão).
+- BFS (Boa Vista): camadas de alcance por nível – útil para rotas e propagação.
+- Mapa de cores por grau: intensidade de cor ~ grau; fácil localizar hubs visualmente.
