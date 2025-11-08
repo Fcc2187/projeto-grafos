@@ -5,44 +5,215 @@
   <title>Grafo Interativo — Bairros</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-        :root{
-        --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af;
-        --accent:#22d3ee; --edge:#475569; --edge-hi:#f79aa9;
-        --node:#60a5fa; --node-hi:#f43f5e; --found:#fbbf24;
-        }
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial}
-    .wrap{display:grid;grid-template-rows:auto 1fr; height:100%;}
-    header{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;padding:.75rem 1rem;border-bottom:1px solid #1f2937;background:linear-gradient(180deg,#0b1222,#0f172a);position:sticky;top:0;z-index:5;}
-    header h1{font-size:1rem;margin:0;color:var(--muted);font-weight:600;letter-spacing:.2px}
-    .controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-left:auto}
-    .search{display:flex;align-items:center;gap:.5rem;background:var(--panel);border:1px solid #1f2937;border-radius:.6rem;padding:.35rem .6rem;}
-    .search input{background:transparent;border:0;outline:none;color:var(--ink);width:18rem;}
-    .btn{background:var(--panel);border:1px solid #1f2937;color:var(--ink);padding:.45rem .7rem;border-radius:.6rem;cursor:pointer;font-weight:600;transition:transform .04s ease, background .2s ease, border-color .2s ease;}
-    .btn:hover{transform:translateY(-1px);border-color:#374151}
-    .btn.accent{border-color:#0ea5e9;box-shadow:0 0 0 1px rgba(14,165,233,.25) inset}
-    .legend{display:flex;align-items:center;gap:.6rem;padding:.35rem .6rem;border:1px solid #1f2937;border-radius:.6rem;background:var(--panel);}
-    .key{display:flex;align-items:center;gap:.35rem;font-size:.9rem;color:var(--muted)}
-    .chip{width:.9rem;height:.9rem;border-radius:.2rem}
-    .stage{position:relative;overflow:hidden}
-    svg{width:100%;height:100%}
-    .link{stroke:var(--edge);stroke-opacity:.6}
-    .link.hi{stroke:var(--edge-hi);stroke-width:3;stroke-opacity:1}
-    .node{cursor:pointer}
-    .node circle{fill:var(--node);stroke:#0b1020;stroke-width:1.2}
-    .node.found circle{fill:var(--found)}
-    .node.hi circle{fill:var(--node-hi)}
-    .label{font-size:10px;pointer-events:none;fill:#cbd5e1;opacity:.9}
-    .tooltip{position:absolute;pointer-events:none;z-index:10;min-width:220px;background:#0b1020cc;border:1px solid #1f2937;border-radius:.6rem;padding:.6rem .75rem;box-shadow:0 6px 22px rgba(0,0,0,.35);backdrop-filter:blur(6px);color:#e5e7eb;font-size:.9rem;display:none;}
-    .tooltip h3{margin:.1rem 0 .4rem 0;font-size:1rem;color:#fff}
-    .tooltip .row{display:flex;justify-content:space-between;gap:1rem;color:var(--muted)}
-    .tooltip .row b{color:#e5e7eb}
-    .note{font-size:.85rem;color:var(--muted);margin-left:.25rem}
-    .overlay{position:absolute;inset:60px 16px 16px 16px;border:1px solid #374151;border-radius:10px;background:rgba(11,16,32,.85);backdrop-filter:blur(6px);padding:16px;color:#e5e7eb;overflow:auto}
-    .overlay pre{white-space:pre-wrap}
+    :root{
+    --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#9ca3af;
+    --accent:#22d3ee; --edge:#475569; --edge-hi:#f79aa9;
+    --node:#60a5fa; --node-hi:#f43f5e; --found:#fbbf24;
+    }
+    html,body{
+        height:100%;
+        margin:0;
+        background:var(--bg);
+        color:var(--ink);
+        font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial
+    }
+    .wrap{
+        display:grid;
+        grid-template-rows:auto 1fr;
+        height:100%;
+    }
+    header{
+        display:flex;
+        gap:.75rem;
+        align-items:center;
+        flex-wrap:wrap;
+        padding:.75rem 1rem;
+        border-bottom:1px solid #1f2937;
+        background:linear-gradient(180deg,#0b1222,#0f172a);
+        position:sticky;
+        top:0;z-index:5;
+    }
+    header h1{
+        font-size:1rem;
+        margin:0;
+        color:var(--muted);
+        font-weight:600;
+        letter-spacing:.2px
+    }
+    .controls{
+        display:flex;
+        gap:.5rem;
+        align-items:center;
+        flex-wrap:wrap;
+        margin-left:auto
+    }
+    .search{
+        display:flex;
+        align-items:center;
+        gap:.5rem;
+        background:var(--panel);
+        border:1px solid #1f2937;
+        border-radius:.6rem;
+        padding:.35rem .6rem;
+    }
+    .search input{
+        background:transparent;
+        border:0;
+        outline:none;
+        color:var(--ink);
+        width:18rem;
+    }
+    .btn{
+        background:var(--panel);
+        border:1px solid #1f2937;
+        color:var(--ink);
+        padding:.45rem .7rem;
+        border-radius:.6rem;
+        cursor:pointer;
+        font-weight:600;
+        transition:transform .04s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{
+        transform:translateY(-1px);
+        border-color:#374151
+    }
+    .btn.accent{
+        border-color:#0ea5e9;
+        box-shadow:0 0 0 1px rgba(14,165,233,.25) inset
+    }
+    .legend-dock{
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 50;
+        pointer-events: none;
+    }
+    .legend{
+        display:flex;
+        align-items:center;
+        gap:.6rem;
+        padding:.5rem .65rem;
+        border:1px solid #1f2937;
+        border-radius:.7rem;
+        background:rgba(17,24,39,.92);
+        box-shadow:0 12px 30px rgba(0,0,0,.35);
+        backdrop-filter:blur(6px);
+        pointer-events: auto;
+    }
+    .legend .key{
+        display:flex;
+        align-items:center;
+        gap:.35rem;
+        font-size:.9rem;
+        color:var(--muted)
+    }
+    .legend .chip{
+        width:.9rem;
+        height:.9rem;
+        border-radius:.2rem
+    }
+    @media (max-width: 640px){
+        .legend-dock{ right: 8px; bottom: 8px; }
+        .legend{ gap:.5rem; padding:.45rem .55rem; }
+    }
+    .stage{
+        position:relative;
+        overflow:hidden
+    }
+    svg{
+        width:100%;
+        height:100%
+    }
+    .link{
+        stroke:var(--edge);
+        stroke-opacity:.6
+    }
+    .link.hi{
+        stroke:var(--edge-hi);
+        stroke-width:3;
+        stroke-opacity:1
+    }
+    .node{
+        cursor:pointer
+    }
+    .node circle{
+        fill:var(--node);
+        stroke:#0b1020;
+        stroke-width:1.2
+    }
+    .node.found circle{
+        fill:var(--found)
+    }
+    .node.hi circle{
+        fill:var(--node-hi)
+    }
+    .label{
+        font-size:10px;
+        pointer-events:none;
+        fill:#cbd5e1;
+        opacity:.9
+    }
+    .tooltip{
+        position:absolute;
+        pointer-events:none;
+        z-index:10;
+        min-width:220px;
+        background:#0b1020cc;
+        border:1px solid #1f2937;
+        border-radius:.6rem;
+        padding:.6rem .75rem;
+        box-shadow:0 6px 22px rgba(0,0,0,.35);
+        backdrop-filter:blur(6px);
+        color:#e5e7eb;
+        font-size:.9rem;
+        display:none;
+    }
+    .tooltip h3{
+        margin:.1rem 0 .4rem 0;
+        font-size:1rem;
+        color:#fff
+    }
+    .tooltip .row{
+        display:flex;
+        justify-content:space-between;
+        gap:1rem;
+        color:var(--muted)
+    }
+    .tooltip .row b{
+        color:#e5e7eb
+    }
+    .note{
+        font-size:.85rem;
+        color:var(--muted);
+        margin-left:.25rem
+    }
+    .overlay{
+        position:absolute;
+        inset:60px 16px 16px 16px;
+        border:1px solid #374151;
+        border-radius:10px;
+        background:rgba(11,16,32,.85);
+        backdrop-filter:blur(6px);
+        padding:16px;
+        color:#e5e7eb;
+        overflow:auto
+    }
+    .overlay pre{
+        white-space:pre-wrap
+    }
   </style>
 </head>
     <body>
     <div class="wrap">
+        <div class="legend-dock" aria-label="Legenda do grafo">
+            <div class="legend" title="Legenda">
+                <div class="key"><span class="chip" style="background:var(--node)"></span> Nó</div>
+                <div class="key"><span class="chip" style="background:var(--found)"></span> Encontrado</div>
+                <div class="key"><span class="chip" style="background:var(--node-hi)"></span> Caminho</div>
+                <div class="key"><span class="chip" style="background:var(--edge-hi)"></span> Aresta do caminho</div>
+            </div>
+        </div>
+
     <header>
         <h1>Grafo Interativo de Bairros <span class="note">(arraste, role para zoom)</span></h1>
         <div class="controls">
@@ -52,12 +223,6 @@
         </div>
         <button id="btnReset" class="btn" title="Limpar seleção/zoom">Limpar</button>
         <button id="btnPath" class="btn accent" title="Realçar caminho fixo">Realçar: Nova Descoberta → Boa Viagem (Setúbal)</button>
-        <div class="legend" title="Legenda">
-            <div class="key"><span class="chip" style="background:var(--node)"></span> Nó</div>
-            <div class="key"><span class="chip" style="background:var(--found)"></span> Encontrado</div>
-            <div class="key"><span class="chip" style="background:var(--node-hi)"></span> Caminho</div>
-            <div class="key"><span class="chip" style="background:var(--edge-hi)"></span> Aresta do caminho</div>
-        </div>
         </div>
     </header>
 
