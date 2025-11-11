@@ -2,33 +2,20 @@ import pandas as pd
 import unicodedata
 from .graph import Graph
 import json
-import csv
-
+import unicodedata  # Import necessário para a padronização
 
 def derreter_bairros(caminho_entrada: str, caminho_saida: str) -> None:
-    """
-    Lê um arquivo CSV com bairros do Recife em múltiplas colunas,
-    realiza um "melt" para transformar as colunas em uma única,
-    padroniza os nomes e salva um novo CSV com bairros únicos.
-    
-    Args:
-        caminho_entrada: Caminho para o arquivo CSV original (ex: 'bairros_recife.csv').
-        caminho_saida: Caminho onde o CSV limpo será salvo (ex: 'bairros_unique.csv').
-    """
     try:
         df = pd.read_csv(caminho_entrada)
 
-        # Derrete todas as colunas em uma única coluna 'bairro'
         df_melted = df.melt(var_name="coluna_original", value_name="bairro").dropna()
 
-        # Extrai o número da microrregião a partir do nome da coluna original
         df_melted["microrregiao"] = df_melted["coluna_original"].str.extract(r"(\d)").fillna(0).astype(int)
 
         def padronizar_nome(nome: str) -> str:
             nome_padronizado = str(nome).strip().title()
             nome_padronizado = unicodedata.normalize("NFKD", nome_padronizado).encode("ASCII", "ignore").decode("ASCII")
-
-            # Isso garante que o nó no grafo será "Boa Viagem", como solicitado.
+            nome_padronizado = nome_padronizado.replace("-", " ")
             if nome_padronizado.lower() == "setubal":
                 return "Boa Viagem"
             
@@ -48,16 +35,6 @@ def derreter_bairros(caminho_entrada: str, caminho_saida: str) -> None:
 
 
 def carregar_bairros(caminho_csv: str) -> Graph:
-    """
-    Lê o arquivo bairros_unique.csv e cria um grafo contendo apenas os nós
-    (um para cada bairro), sem nenhuma aresta.
-    
-    Args:
-        caminho_csv: O caminho para o arquivo CSV gerado por derreter_bairros().
-
-    Returns:
-        Um objeto Graph com todos os bairros carregados como nós.
-    """
     grafo = Graph()
     try:
         df = pd.read_csv(caminho_csv)
@@ -91,7 +68,6 @@ def calcular_recife_global(grafo: Graph, caminho_saida: str):
         "densidade": round(grafo.density(), 4)
     }
 
-    # salva em JSON
     with open(caminho_saida, "w") as f:
         json.dump(metrica, f, indent=4)
 
@@ -113,7 +89,6 @@ def calcular_metricas_microrregioes(grafo: Graph, caminho_bairros: str, caminho_
             "densidade": round(sub.density(), 4)
         })
 
-    # salva em JSON
     with open(caminho_saida, "w") as f:
         json.dump(microrregioes_metrics, f, indent=4)
 
@@ -172,10 +147,9 @@ def gerar_rankings_json(path_graus: str, path_ego: str, path_out: str):
     """
     import pandas as pd, json
 
-    df_g = pd.read_csv(path_graus)              # bairro, grau
-    df_e = pd.read_csv(path_ego)                # bairro, grau, ordem_ego, tamanho_ego, densidade_ego
+    df_g = pd.read_csv(path_graus)             
+    df_e = pd.read_csv(path_ego)               
 
-    # ---------- Maior grau ----------
     gmax = df_g["grau"].max()
     top_g = df_g[df_g["grau"] == gmax].merge(
         df_e[["bairro", "densidade_ego", "ordem_ego"]], on="bairro", how="left"
@@ -186,10 +160,9 @@ def gerar_rankings_json(path_graus: str, path_ego: str, path_out: str):
     )
     linha_g = top_g.iloc[0]
 
-    # ---------- Maior densidade_ego ----------
     dmax = df_e["densidade_ego"].max()
     top_d = df_e[df_e["densidade_ego"] == dmax].copy()
-    # acrescenta grau para segundo desempate
+
     graus_map = df_g.set_index("bairro")["grau"]
     top_d["grau"] = top_d["bairro"].map(graus_map)
     top_d = top_d.sort_values(
@@ -231,7 +204,6 @@ def carregar_grafo_ponderado(caminho_csv: str) -> Graph:
         grafo.add_node(u)
         grafo.add_node(v)
 
-        # Adiciona como (vizinho, peso)
         if u not in grafo.adj:
             grafo.adj[u] = []
         if v not in grafo.adj:
@@ -286,7 +258,6 @@ def carregar_grafo_recife(path_unique, path_adjacencias):
     print("Carregando nós (bairros)...")
     try:
         df_nodes = pd.read_csv(path_unique)
-        # Criar mapa bairro -> microrregiao [cite: 55]
         bairro_para_micro = dict(zip(df_nodes['bairro'], df_nodes['microrregiao']))
     except FileNotFoundError:
         print(f"Erro: Arquivo de nós não encontrado em {path_unique}")
@@ -295,10 +266,8 @@ def carregar_grafo_recife(path_unique, path_adjacencias):
         print(f"Erro ao ler {path_unique}: {e}")
         return None, None
 
-    # Cria o objeto Graph
     G = Graph()
 
-    # Adiciona os nós ao grafo
     for bairro, microrregiao in bairro_para_micro.items():
         G.adicionar_no(bairro, microrregiao)
         
@@ -314,9 +283,7 @@ def carregar_grafo_recife(path_unique, path_adjacencias):
         print(f"Erro ao ler {path_adjacencias}: {e}")
         return None, None
 
-    # Adiciona as arestas ao grafo
     for _, linha in df_edges.iterrows():
-        # dentro do loop das arestas
         u = str(linha['bairro_origem']).strip()
         v = str(linha['bairro_destino']).strip()
         peso = float(linha.get('peso', 1.0))
