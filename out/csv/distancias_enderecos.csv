@@ -1,6 +1,6 @@
 X,Y,bairro_X,bairro_Y,custo,caminho
-Nova Descoberta,Boa Viagem,Nova Descoberta,Boa Viagem,11.0,Nova Descoberta -> Macaxeira -> Apipucos -> Caxanga -> Varzea -> Curado -> Jardim Sao Paulo -> Areias -> Barro -> Cohab -> Ibura -> Boa Viagem (Setúbal)
-Afogados,Bongi,Afogados,Bongi,1.0,Afogados -> Bongi
-Parnamirim,Tamarineira,Parnamirim,Tamarineira,1.0,Parnamirim -> Tamarineira
-Cidade Universitaria,Varzea,Cidade Universitaria,Varzea,1.0,Cidade Universitaria -> Varzea
-Santo Amaro,Recife,Santo Amaro,Recife,1.0,Santo Amaro -> Recife
+Nova Descoberta,Boa Viagem,Nova Descoberta,Boa Viagem,3.92,Nova Descoberta -> Vasco Da Gama -> Casa Amarela -> Tamarineira -> Gracas -> Espinheiro -> Boa Vista -> Coelhos -> Sao Jose -> Cabanga -> Pina -> Imbiribeira -> Boa Viagem (Setúbal)
+Afogados,Bongi,Afogados,Bongi,0.772,Afogados -> Bongi
+Parnamirim,Tamarineira,Parnamirim,Tamarineira,0.36,Parnamirim -> Tamarineira
+Cidade Universitaria,Varzea,Cidade Universitaria,Varzea,0.75,Cidade Universitaria -> Varzea
+Santo Amaro,Recife,Santo Amaro,Recife,0.304,Santo Amaro -> Recife
