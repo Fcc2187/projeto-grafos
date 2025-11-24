@@ -2,7 +2,7 @@ import pandas as pd
 import unicodedata
 from .graph import Graph
 import json
-import unicodedata  # Import necessário para a padronização
+import unicodedata
 
 def derreter_bairros(caminho_entrada: str, caminho_saida: str) -> None:
     try:

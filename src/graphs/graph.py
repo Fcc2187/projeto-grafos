@@ -1,5 +1,3 @@
-# Coloque este código em src/graph.py
-
 from collections import defaultdict
 
 class Graph:
@@ -10,10 +8,10 @@ class Graph:
     
     def __init__(self):
       # nós, lista de adjacência e pesos
-      self.nodes = {}            # dict[str, dict]  -> {"microrregiao": int | None}
-      self.adjacencia = {}       # dict[str, list[str]]
-      self.edges = set()         # set[tuple(str,str)] (u,v) ordenado
-      self.pesos = {}            # dict[tuple(str,str), float]
+      self.nodes = {}
+      self.adjacencia = {}
+      self.edges = set()
+      self.pesos = {}
 
 
     def adicionar_no(self, nome: str, microrregiao: int | None = None):
@@ -21,7 +19,6 @@ class Graph:
             self.nodes[nome] = {"microrregiao": microrregiao}
             self.adjacencia[nome] = []
         else:
-            # se já existe, apenas atualiza microrregião se vier valor
             if microrregiao is not None:
                 self.nodes[nome]["microrregiao"] = microrregiao
 

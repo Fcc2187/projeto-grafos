@@ -1,4 +1,3 @@
-# tests/test_dijkstra.py
 from src.graphs.algorithms import dijkstra
 
 class _G:
@@ -7,7 +6,6 @@ class _G:
         self.adj = adj
 
 def test_dijkstra_pequeno():
-    # A--1--B--2--C ; A--5--C  -> menor A->C é A-B-C custo 3
     g = _G({
         "A": [("B", 1), ("C", 5)],
         "B": [("A", 1), ("C", 2)],

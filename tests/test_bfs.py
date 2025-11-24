@@ -23,12 +23,12 @@ def test_bfs_mini():
     assert depth["B"] == 1 and depth["C"] == 1
     assert depth["D"] == 2 and parent["D"] == "B"
     assert depth["E"] == 2 and parent["E"] == "C"
-    #arvore BFS tem (n-1) arestas
+
     n = len(order)
     tree_edges = sum(1 for v,p in parent.items() if p is not None)
     assert tree_edges == n - 1
 
 def test_bfs_recife_smoke():
     G, _ = carregar_grafo_recife(PATH_NODES, PATH_EDGES)
-    order, parent, depth = bfs_layers(G, "Boa Vista")  #apenas garante que roda
+    order, parent, depth = bfs_layers(G, "Boa Vista")
     assert len(order) >= 1 and "Boa Vista" in parent

@@ -1,4 +1,3 @@
-# tests/test_passo6.py
 import os, json, unicodedata
 import pandas as pd
 

@@ -1,4 +1,3 @@
-# tests/test_passo8.py
 import os
 from src.graphs.io import carregar_grafo_recife
 from src.viz import (

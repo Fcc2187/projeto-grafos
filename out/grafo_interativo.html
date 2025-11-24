@@ -231,8 +231,6 @@
         <div id="tooltip" class="tooltip"></div>
     </div>
     </div>
-
-    <!-- D3.js -->
         <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 
         <script>
@@ -259,10 +257,10 @@
             return r.json();
         }
 
-        // Carrega o grafo completo (que você acabou de copiar)
+        // Carrega o grafo completo
         let data = await fetchJSON('./json/grafo_bairros.json');
 
-        // Carrega o caminho fixo (se não existir, o botão avisa)
+        // Carrega o caminho fixo
         let pathFile = null;
         try { pathFile = await fetchJSON('./json/percurso_nova_descoberta_setubal.json'); }
         catch(e){ console.warn('Sem arquivo de percurso:', e); }

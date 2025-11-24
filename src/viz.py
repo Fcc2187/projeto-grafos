@@ -1,4 +1,3 @@
-# --- Passo 7: árvore do percurso (visual) ---
 import os
 import json
 from src.graphs.algorithms import bfs_layers
@@ -8,7 +7,7 @@ from colorsys import hsv_to_rgb
 try:
     from pyvis.network import Network
 except Exception:
-    Network = None  # deixamos opcional
+    Network = None
 
 # PNG estático (matplotlib)
 try:
@@ -35,7 +34,7 @@ def build_path_tree_html(path_nodes: list[str], outfile: str) -> None:
     start, end = path_nodes[0], path_nodes[-1]
     for n in path_nodes:
         color = "#10b981" if n == start else ("#2563eb" if n == end else "#334155")
-        net.add_node(n, label=n, color=color, font={"color": "#111827"})  # <-- preto
+        net.add_node(n, label=n, color=color, font={"color": "#111827"})
 
     for u, v in zip(path_nodes, path_nodes[1:]):
         net.add_edge(u, v, color="#ef4444", width=4)
@@ -101,7 +100,7 @@ def gerar_arvore_percurso_from_json(
     json_path: str = "out/percurso_nova_descoberta_setubal.json",
     html_out: str = "out/arvore_percurso.html",
     png_out: str = "out/arvore_percurso.png",
-    modo: str = "html",  # "html" ou "png"
+    modo: str = "html",
 ) -> str:
     """
     Lê o JSON do Passo 6 e gera a árvore do percurso no formato desejado.
@@ -321,7 +320,7 @@ def bfs_layers_visual_png(G, source: str, out_png: str) -> None:
             xs.append(x + i)
             ys.append(-d)
             labels.append(n)
-        x += len(row) + 1  # separação entre camadas
+        x += len(row) + 1
 
     plt.figure(figsize=(max(10, len(order) * 0.6), 6))
     # arestas da árvore
@@ -369,7 +368,7 @@ def degree_colormap_html(G, outfile: str) -> None:
             label=f"{n} ({g})",
             title=f"grau = {g}",
             color=color,
-            font={"color": "#111827"}  # PRETO
+            font={"color": "#111827"}
         )
 
     for (u, v) in G.edges:
