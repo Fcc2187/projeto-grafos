@@ -1,4 +1,3 @@
-# src/solve.py
 import json
 import pandas as pd
 from collections import defaultdict

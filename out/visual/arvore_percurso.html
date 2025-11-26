@@ -61,6 +61,7 @@
 
         <script type="text/javascript">
 
+              // initialize global variables.
               var edges;
               var nodes;
               var allNodes;
@@ -76,9 +77,17 @@
                   value : []
               };
 
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
               function drawGraph() {
                   var container = document.getElementById('mynetwork');
 
+                  
+
+                  // parsing and collecting nodes and edges from the python
                   nodes = new vis.DataSet([{"color": "#10b981", "font": {"color": "#111827"}, "id": "Nova Descoberta", "label": "Nova Descoberta", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Vasco Da Gama", "label": "Vasco Da Gama", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Casa Amarela", "label": "Casa Amarela", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Tamarineira", "label": "Tamarineira", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Gracas", "label": "Gracas", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Espinheiro", "label": "Espinheiro", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Boa Vista", "label": "Boa Vista", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Coelhos", "label": "Coelhos", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Sao Jose", "label": "Sao Jose", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Cabanga", "label": "Cabanga", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Pina", "label": "Pina", "shape": "dot"}, {"color": "#334155", "font": {"color": "#111827"}, "id": "Imbiribeira", "label": "Imbiribeira", "shape": "dot"}, {"color": "#2563eb", "font": {"color": "#111827"}, "id": "Boa Viagem (Set\u00fabal)", "label": "Boa Viagem (Set\u00fabal)", "shape": "dot"}]);
                   edges = new vis.DataSet([{"color": "#ef4444", "from": "Nova Descoberta", "to": "Vasco Da Gama", "width": 4}, {"color": "#ef4444", "from": "Vasco Da Gama", "to": "Casa Amarela", "width": 4}, {"color": "#ef4444", "from": "Casa Amarela", "to": "Tamarineira", "width": 4}, {"color": "#ef4444", "from": "Tamarineira", "to": "Gracas", "width": 4}, {"color": "#ef4444", "from": "Gracas", "to": "Espinheiro", "width": 4}, {"color": "#ef4444", "from": "Espinheiro", "to": "Boa Vista", "width": 4}, {"color": "#ef4444", "from": "Boa Vista", "to": "Coelhos", "width": 4}, {"color": "#ef4444", "from": "Coelhos", "to": "Sao Jose", "width": 4}, {"color": "#ef4444", "from": "Sao Jose", "to": "Cabanga", "width": 4}, {"color": "#ef4444", "from": "Cabanga", "to": "Pina", "width": 4}, {"color": "#ef4444", "from": "Pina", "to": "Imbiribeira", "width": 4}, {"color": "#ef4444", "from": "Imbiribeira", "to": "Boa Viagem (Set\u00fabal)", "width": 4}]);
 
@@ -88,7 +97,7 @@
                     nodeColors[nodeId] = allNodes[nodeId].color;
                   }
                   allEdges = edges.get({ returnType: "Object" });
-
+                  // adding nodes and edges to the graph
                   data = {nodes: nodes, edges: edges};
 
                   var options = {"nodes": {"font": {"size": 18, "color": "#111827"}}, "edges": {"color": {"color": "#94a3b8"}}, "physics": {"stabilization": true}};

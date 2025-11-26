@@ -35,12 +35,10 @@ def _is_boa_viagem(s: str) -> bool:
 
 
 def test_passo6():
-    # 1) Carrega o grafo ponderado dos bairros
     G, _ = carregar_grafo_recife(PATH_NODES, PATH_EDGES)
     assert G is not None and G.get_ordem() > 0 and G.get_tamanho() > 0, \
         "Falha ao carregar o grafo."
 
-    # 2) Lê enderecos.csv (apenas bairro_X, bairro_Y)
     df = pd.read_csv(PATH_ENDS)
 
     required = {"bairro_X", "bairro_Y"}
@@ -100,12 +98,10 @@ def test_passo6():
                 }, f, ensure_ascii=False, indent=2)
             salvou_json_obrigatorio = True
 
-    # 3) Salva distancias_enderecos.csv
     pd.DataFrame(
         linhas, columns=["X", "Y", "bairro_X", "bairro_Y", "custo", "caminho"]
     ).to_csv(CSV_OUT, index=False, encoding="utf-8")
 
-    # 4) Validações finais
     assert os.path.exists(CSV_OUT), "out/csv/distancias_enderecos.csv não foi gerado."
     df_out = pd.read_csv(CSV_OUT)
     for col in ["X", "Y", "bairro_X", "bairro_Y", "custo", "caminho"]:

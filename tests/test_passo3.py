@@ -13,10 +13,8 @@ OUT_CSV  = os.path.join(OUT_DIR, "csv")
 os.makedirs(OUT_JSON, exist_ok=True)
 os.makedirs(OUT_CSV,  exist_ok=True)
 
-# 1) Carrega grafo e mapa bairro->microrregião
 G, bairro_para_micro = carregar_grafo_recife(PATH_NODES, PATH_EDGES)
 
-# ---------- 3.1 Globais ----------
 globais = {
     "ordem": G.get_ordem(),
     "tamanho": G.get_tamanho(),
@@ -26,7 +24,6 @@ with open(os.path.join(OUT_JSON, "recife_global.json"), "w", encoding="utf-8") a
     json.dump(globais, f, ensure_ascii=False, indent=2)
 print("✓ out/json/recife_global.json")
 
-# ---------- 3.2 Microrregiões ----------
 micro_para_bairros = defaultdict(list)
 for b, m in bairro_para_micro.items():
     micro_para_bairros[m].append(b)
@@ -45,7 +42,6 @@ with open(os.path.join(OUT_JSON, "microrregioes.json"), "w", encoding="utf-8") a
     json.dump(lista_micro, f, ensure_ascii=False, indent=2)
 print("✓ out/json/microrregioes.json")
 
-# ---------- 3.3 Ego-subrede ----------
 linhas = []
 for bairro in G.nodes.keys():
     viz = G.get_vizinhos(bairro)

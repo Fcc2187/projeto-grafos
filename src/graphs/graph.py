@@ -7,7 +7,6 @@ class Graph:
     """
     
     def __init__(self):
-      # nós, lista de adjacência e pesos
       self.nodes = {}
       self.adjacencia = {}
       self.edges = set()
@@ -65,7 +64,6 @@ class Graph:
         if V < 2:
             return 0.0 
             
-        # Fórmula de densidade para grafos não-direcionados 
         return (2 * E) / (V * (V - 1))
 
     def criar_subgrafo_induzido(self, lista_nos: list[str]) -> "Graph":

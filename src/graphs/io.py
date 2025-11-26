@@ -3,6 +3,8 @@ import unicodedata
 from .graph import Graph
 import json
 import unicodedata
+import csv
+from .algorithms import dijkstra
 
 def derreter_bairros(caminho_entrada: str, caminho_saida: str) -> None:
     try:
@@ -96,7 +98,6 @@ def calcular_metricas_microrregioes(grafo: Graph, caminho_bairros: str, caminho_
     return microrregioes_metrics
 
 def calcular_metricas_ego(grafo: Graph, caminho_saida: str):
-    import csv
     resultados = []
 
     for bairro in grafo.nodes.keys():
@@ -129,7 +130,7 @@ def calcular_graus(grafo: Graph, caminho_saida: str):
     Gera out/graus.csv no formato exigido pelo PDF: bairro,grau
     (grau = número de interconexões).
     """
-    import csv
+    
     linhas = [{"bairro": b, "grau": grafo.get_grau(b)} for b in grafo.nodes.keys()]
     with open(caminho_saida, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["bairro", "grau"])
@@ -145,7 +146,6 @@ def gerar_rankings_json(path_graus: str, path_ego: str, path_out: str):
       - maior_grau: argmax(grau) com desempate (densidade_ego, ordem_ego, bairro)
       - maior_densidade_ego: argmax(densidade_ego) com desempate (ordem_ego, grau, bairro)
     """
-    import pandas as pd, json
 
     df_g = pd.read_csv(path_graus)             
     df_e = pd.read_csv(path_ego)               
@@ -219,7 +219,6 @@ def calcular_distancias_enderecos(caminho_adj: str, caminho_enderecos: str, said
     """
     Calcula o menor caminho entre pares de endereços (origem, destino) usando Dijkstra.
     """
-    from .algorithms import dijkstra
 
     grafo = carregar_grafo_ponderado(caminho_adj)
     df = pd.read_csv(caminho_enderecos)

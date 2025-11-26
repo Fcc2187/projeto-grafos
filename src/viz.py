@@ -3,13 +3,11 @@ import json
 from src.graphs.algorithms import bfs_layers
 from colorsys import hsv_to_rgb
 
-# HTML interativo (pyvis)
 try:
     from pyvis.network import Network
 except Exception:
     Network = None
 
-# PNG estático (matplotlib)
 try:
     import matplotlib.pyplot as plt
 except Exception:
@@ -21,7 +19,6 @@ except Exception:
     go = None
 
 
-# --- ÁRVORE do percurso (HTML) com rótulos pretos ---
 def build_path_tree_html(path_nodes: list[str], outfile: str) -> None:
     if Network is None:
         raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
@@ -39,7 +36,6 @@ def build_path_tree_html(path_nodes: list[str], outfile: str) -> None:
     for u, v in zip(path_nodes, path_nodes[1:]):
         net.add_edge(u, v, color="#ef4444", width=4)
 
-    # deixa fonte dos nós preta e bordas discretas
     net.set_options("""{
       "nodes": { "font": { "size": 18, "color": "#111827" } },
       "edges": { "color": { "color": "#94a3b8" } },
@@ -62,17 +58,14 @@ def build_path_tree_png(path_nodes: list[str], outfile: str) -> None:
 
     os.makedirs(os.path.dirname(outfile) or ".", exist_ok=True)
 
-    # posição dos nós em linha horizontal
     xs = list(range(len(path_nodes)))
     ys = [0] * len(path_nodes)
 
     fig, ax = plt.subplots(figsize=(max(8, len(path_nodes) * 1.4), 3))
 
-    # arestas: segmentos consecutivos, destacados
     for i in range(len(path_nodes) - 1):
         ax.plot([xs[i], xs[i + 1]], [ys[i], ys[i + 1]], linewidth=4, color="#ef4444")
 
-    # nós: início, meio, fim com cores
     start, end = path_nodes[0], path_nodes[-1]
     colors = []
     for n in path_nodes:
@@ -85,11 +78,9 @@ def build_path_tree_png(path_nodes: list[str], outfile: str) -> None:
 
     ax.scatter(xs, ys, s=300, c=colors, zorder=3)
 
-    # rótulos dos bairros (sempre visíveis)
     for x, y, name in zip(xs, ys, path_nodes):
         ax.text(x, y + 0.08, name, ha="center", va="bottom", fontsize=10)
 
-    # limpeza visual
     ax.set_axis_off()
     plt.tight_layout()
     plt.savefig(outfile, dpi=150, bbox_inches="tight")
@@ -141,7 +132,6 @@ def plot_degree_histogram(path_graus_csv: str, out_png: str) -> str:
         raise ValueError("graus.csv está vazio.")
 
     gmin, gmax = int(min(graus)), int(max(graus))
-    # bins alinhados em inteiros (barras centradas nos valores 0,1,2,...)
     bins = np.arange(gmin - 0.5, gmax + 1.5, 1)
 
     plt.figure(figsize=(10, 5))
@@ -162,14 +152,12 @@ def build_top_k_subgraph_html(G, k: int, out_html: str, graus_csv: str) -> str:
     os.makedirs(os.path.dirname(out_html) or ".", exist_ok=True)
 
     deg = _map_graus_from_csv(graus_csv)
-    # seleciona só bairros presentes no grafo
     deg = {b: g for b, g in deg.items() if b in G.nodes}
     top = sorted(deg.items(), key=lambda kv: (-kv[1], kv[0]))[:k]
     ordem = [b for b, _ in top]
 
     net = Network(height="720px", width="100%", notebook=False, directed=False)
 
-    # nós com tamanho pela magnitude do grau; rótulos pretos
     for b in ordem:
         d = int(deg[b])
         net.add_node(
@@ -177,7 +165,6 @@ def build_top_k_subgraph_html(G, k: int, out_html: str, graus_csv: str) -> str:
             value=d, color="#60a5fa", font={"color": "#111827"}
         )
 
-    # liga em cadeia pela ORDEM de grau (mesmo que não haja aresta real)
     for u, v in zip(ordem, ordem[1:]):
         net.add_edge(u, v, color="#64748b", width=2, smooth=True)
 
@@ -200,7 +187,6 @@ def build_top_k_subgraph_png(G, k: int, out_png: str, graus_csv: str) -> str:
     ordem = [b for b, _ in top]
     vals  = [deg[b] for b in ordem]
 
-    # layout 1D com arestas em cadeia
     xs = list(range(len(ordem))); ys = [0] * len(ordem)
     fig, ax = plt.subplots(figsize=(max(8, len(ordem) * 1.2), 3))
     for i in range(len(ordem) - 1):
@@ -214,9 +200,6 @@ def build_top_k_subgraph_png(G, k: int, out_png: str, graus_csv: str) -> str:
     plt.close(fig)
     return out_png
 
-
-# src/viz.py  — substitua a função inteira
-
 def bar_microrregioes_densidade(path_json: str, out_png: str) -> str:
     import json, matplotlib.pyplot as plt
     os.makedirs(os.path.dirname(out_png) or ".", exist_ok=True)
@@ -224,7 +207,6 @@ def bar_microrregioes_densidade(path_json: str, out_png: str) -> str:
     with open(path_json, "r", encoding="utf-8") as f:
         dados = json.load(f)
 
-    # ordena por densidade desc
     dados = sorted(dados, key=lambda d: d["densidade"], reverse=True)
     labels = [str(d["microrregiao"]) for d in dados]
     dens   = [float(d["densidade"]) for d in dados]
@@ -240,7 +222,6 @@ def bar_microrregioes_densidade(path_json: str, out_png: str) -> str:
     return out_png
 
 
-# --- BFS camadas (HTML) com rótulos pretos ---
 def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
     if Network is None:
         raise RuntimeError("PyVis não está instalado. Use: pip install pyvis")
@@ -252,7 +233,6 @@ def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
     if raiz not in G.nodes:
         raise ValueError(f"Nó raiz '{raiz}' não existe no grafo.")
 
-    # BFS simples
     q = deque([raiz])
     visited = {raiz: 0}
     while q:
@@ -274,10 +254,9 @@ def bfs_layers_visual_html(G, raiz: str, out_html: str) -> str:
             label=f"{n} (nível {nivel})",
             title=f"grau = {grau.get(n,0)} · nível = {nivel}",
             color=c,
-            font={"color": "#111827"}  # PRETO
+            font={"color": "#111827"}
         )
 
-    # arestas apenas entre níveis consecutivos (árvore BFS)
     for v, nivel_v in visited.items():
         for u in G.get_vizinhos(v):
             if u in visited and visited[u] == nivel_v - 1:
@@ -304,12 +283,10 @@ def bfs_layers_visual_png(G, source: str, out_png: str) -> None:
 
     order, parent, depth = bfs_layers(G, source)
 
-    # agrupa por camada
     layers: dict[int, list[str]] = {}
     for n in order:
         layers.setdefault(depth[n], []).append(n)
 
-    # coordenadas em grid por camada
     xs, ys, labels = [], [], []
     x = 0
     positions = {}
@@ -323,7 +300,6 @@ def bfs_layers_visual_png(G, source: str, out_png: str) -> None:
         x += len(row) + 1
 
     plt.figure(figsize=(max(10, len(order) * 0.6), 6))
-    # arestas da árvore
     for n, p in parent.items():
         if p is None:
             continue
@@ -331,7 +307,6 @@ def bfs_layers_visual_png(G, source: str, out_png: str) -> None:
         x2, y2 = positions[n]
         plt.plot([x1, x2], [y1, y2], color="#ef4444", linewidth=3)
 
-    # nós
     plt.scatter([positions[n][0] for n in order],
                 [positions[n][1] for n in order], s=250, zorder=3)
     for n in order:
@@ -360,7 +335,7 @@ def degree_colormap_html(G, outfile: str) -> None:
     net = Network(height="720px", width="100%", notebook=False, directed=False)
 
     for n, g in graus.items():
-        t = (g - gmin) / span  # 0..1
+        t = (g - gmin) / span
         r, g_, b = hsv_to_rgb(0.0, 0.35 + 0.65*t, 0.6 + 0.35*t)
         color = _hex_from_rgb(r, g_, b)
         net.add_node(
@@ -399,7 +374,6 @@ def degree_colormap_png(G, outfile: str) -> None:
     if n == 0:
         raise ValueError("Grafo vazio.")
 
-    # posições circulares
     xs, ys = [], []
     for i in range(n):
         ang = 2*math.pi*i/n
@@ -419,11 +393,9 @@ def degree_colormap_png(G, outfile: str) -> None:
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.scatter(xs, ys, s=200, c=colors, edgecolor="#111827", linewidth=0.6, zorder=3)
 
-    # rótulos
     for x, y, name, d in zip(xs, ys, nodes, degs):
         ax.text(x, y+0.07, f"{name} ({d})", ha="center", va="bottom", fontsize=8)
 
-    # desenha algumas arestas (line segments)
     pos = {v: (x, y) for v, x, y in zip(nodes, xs, ys)}
     for (u, v) in G.edges:
         x1, y1 = pos[u]; x2, y2 = pos[v]
