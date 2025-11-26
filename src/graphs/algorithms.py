@@ -2,13 +2,7 @@ import heapq
 from collections import deque
 
 def dijkstra(G, origem: str, destino: str):
-    """
-    Dijkstra usando a API da sua classe Graph:
-      - G.get_vizinhos(u) -> lista de vizinhos de u
-      - G.get_peso(u, v)  -> peso (>= 0) da aresta (u, v)
-    Retorna: (custo_total, caminho_em_lista)
-    """
-    # inicialização
+    
     INF = float("inf")
     dist = {v: INF for v in G.nodes.keys()}
     prev = {v: None for v in G.nodes.keys()}
@@ -36,7 +30,6 @@ def dijkstra(G, origem: str, destino: str):
     if dist[destino] == INF:
         return INF, []
 
-    # reconstrói caminho
     path = []
     cur = destino
     while cur is not None:

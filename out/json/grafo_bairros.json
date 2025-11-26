@@ -569,892 +569,892 @@
     {
       "source": "Mustardinha",
       "target": "Bongi",
-      "weight": 1.0
+      "weight": 0.7995
     },
     {
       "source": "Agua Fria",
       "target": "Linha Do Tiro",
-      "weight": 1.0
+      "weight": 0.84
     },
     {
       "source": "Tejipio",
       "target": "Jardim Sao Paulo",
-      "weight": 1.0
+      "weight": 0.394
     },
     {
       "source": "Cidade Universitaria",
       "target": "Iputinga",
-      "weight": 1.0
+      "weight": 0.186
     },
     {
       "source": "Estancia",
       "target": "Jiquia",
-      "weight": 1.0
+      "weight": 0.27
     },
     {
       "source": "Torroes",
       "target": "Cordeiro",
-      "weight": 1.0
+      "weight": 0.12
     },
     {
       "source": "Sancho",
       "target": "Curado",
-      "weight": 1.0
+      "weight": 0.279
     },
     {
       "source": "Alto Jose Bonifacio",
       "target": "Vasco Da Gama",
-      "weight": 1.0
+      "weight": 0.06
     },
     {
       "source": "Afogados",
       "target": "Bongi",
-      "weight": 1.0
+      "weight": 0.772
     },
     {
-      "source": "Sao Jose",
-      "target": "Santo Antonio",
-      "weight": 1.0
+        "source": "Sao Jose",
+        "target": "Santo Antonio",
+        "weight": 0.55
     },
     {
-      "source": "Tejipio",
-      "target": "Sancho",
-      "weight": 1.0
+        "source": "Tejipio",
+        "target": "Sancho",
+        "weight": 0.411
     },
     {
-      "source": "Morro Da Conceicao",
-      "target": "Alto Jose Bonifacio",
-      "weight": 1.0
+        "source": "Morro Da Conceicao",
+        "target": "Alto Jose Bonifacio",
+        "weight": 0.3825
     },
     {
-      "source": "Peixinhos",
-      "target": "Campina Do Barreto",
-      "weight": 1.0
+        "source": "Peixinhos",
+        "target": "Campina Do Barreto",
+        "weight": 0.26
     },
     {
-      "source": "Morro Da Conceicao",
-      "target": "Vasco Da Gama",
-      "weight": 1.0
+        "source": "Morro Da Conceicao",
+        "target": "Vasco Da Gama",
+        "weight": 0.285
     },
     {
-      "source": "Areias",
-      "target": "Jiquia",
-      "weight": 1.0
+        "source": "Areias",
+        "target": "Jiquia",
+        "weight": 0.375
     },
     {
-      "source": "Coelhos",
-      "target": "Boa Vista",
-      "weight": 1.0
+        "source": "Coelhos",
+        "target": "Boa Vista",
+        "weight": 0.24
     },
     {
-      "source": "Prado",
-      "target": "Zumbi",
-      "weight": 1.0
+        "source": "Prado",
+        "target": "Zumbi",
+        "weight": 0.33
     },
     {
-      "source": "Macaxeira",
-      "target": "Nova Descoberta",
-      "weight": 1.0
+        "source": "Macaxeira",
+        "target": "Nova Descoberta",
+        "weight": 0.18
     },
     {
-      "source": "Fundao",
-      "target": "Agua Fria",
-      "weight": 1.0
+        "source": "Fundao",
+        "target": "Agua Fria",
+        "weight": 0.36
     },
     {
-      "source": "San Martin",
-      "target": "Bongi",
-      "weight": 1.0
+        "source": "San Martin",
+        "target": "Bongi",
+        "weight": 0.55
     },
     {
-      "source": "Boa Viagem",
-      "target": "Imbiribeira",
-      "weight": 1.0
+        "source": "Boa Viagem",
+        "target": "Imbiribeira",
+        "weight": 0.285
     },
     {
-      "source": "Ibura",
-      "target": "Ipsep",
-      "weight": 1.0
+        "source": "Ibura",
+        "target": "Ipsep",
+        "weight": 0.12
     },
     {
-      "source": "Brejo De Beberibe",
-      "target": "Brejo Da Guabiraba",
-      "weight": 1.0
+        "source": "Brejo De Beberibe",
+        "target": "Brejo Da Guabiraba",
+        "weight": 0.18
     },
     {
-      "source": "Areias",
-      "target": "Estancia",
-      "weight": 1.0
+        "source": "Areias",
+        "target": "Estancia",
+        "weight": 0.436
     },
     {
-      "source": "Afogados",
-      "target": "Mustardinha",
-      "weight": 1.0
+        "source": "Afogados",
+        "target": "Mustardinha",
+        "weight": 0.285
     },
     {
-      "source": "Parnamirim",
-      "target": "Tamarineira",
-      "weight": 1.0
+        "source": "Parnamirim",
+        "target": "Tamarineira",
+        "weight": 0.36
     },
     {
-      "source": "Soledade",
-      "target": "Santo Amaro",
-      "weight": 1.0
+        "source": "Soledade",
+        "target": "Santo Amaro",
+        "weight": 0.39
     },
     {
-      "source": "Boa Vista",
-      "target": "Santo Amaro",
-      "weight": 1.0
+        "source": "Boa Vista",
+        "target": "Santo Amaro",
+        "weight": 0.2025
     },
     {
-      "source": "Nova Descoberta",
-      "target": "Brejo De Beberibe",
-      "weight": 1.0
+        "source": "Nova Descoberta",
+        "target": "Brejo De Beberibe",
+        "weight": 0.105
     },
     {
-      "source": "Torre",
-      "target": "Zumbi",
-      "weight": 1.0
+        "source": "Torre",
+        "target": "Zumbi",
+        "weight": 0.42
     },
     {
-      "source": "Agua Fria",
-      "target": "Porto Da Madeira",
-      "weight": 1.0
+        "source": "Agua Fria",
+        "target": "Porto Da Madeira",
+        "weight": 0.141
     },
     {
-      "source": "Jardim Sao Paulo",
-      "target": "Estancia",
-      "weight": 1.0
+        "source": "Jardim Sao Paulo",
+        "target": "Estancia",
+        "weight": 0.39
     },
     {
-      "source": "Tejipio",
-      "target": "Coqueiral",
-      "weight": 1.0
+        "source": "Tejipio",
+        "target": "Coqueiral",
+        "weight": 0.3
     },
     {
-      "source": "Iputinga",
-      "target": "Caxanga",
-      "weight": 1.0
+        "source": "Iputinga",
+        "target": "Caxanga",
+        "weight": 0.33
     },
     {
-      "source": "Torreao",
-      "target": "Campo Grande",
-      "weight": 1.0
+        "source": "Torreao",
+        "target": "Campo Grande",
+        "weight": 0.21
     },
     {
-      "source": "Imbiribeira",
-      "target": "Ipsep",
-      "weight": 1.0
+        "source": "Imbiribeira",
+        "target": "Ipsep",
+        "weight": 0.435
     },
     {
-      "source": "Afogados",
-      "target": "Mangueira",
-      "weight": 1.0
+        "source": "Afogados",
+        "target": "Mangueira",
+        "weight": 0.225
     },
     {
-      "source": "Torroes",
-      "target": "Engenho Do Meio",
-      "weight": 1.0
+        "source": "Torroes",
+        "target": "Engenho Do Meio",
+        "weight": 0.3
     },
     {
-      "source": "Apipucos",
-      "target": "Dois Irmaos",
-      "weight": 1.0
+        "source": "Apipucos",
+        "target": "Dois Irmaos",
+        "weight": 0.39
     },
     {
-      "source": "Barro",
-      "target": "Areias",
-      "weight": 1.0
+        "source": "Barro",
+        "target": "Areias",
+        "weight": 0.453
     },
     {
-      "source": "Campina Do Barreto",
-      "target": "Cajueiro",
-      "weight": 1.0
+        "source": "Campina Do Barreto",
+        "target": "Cajueiro",
+        "weight": 0.45
     },
     {
-      "source": "Nova Descoberta",
-      "target": "Brejo Da Guabiraba",
-      "weight": 1.0
+        "source": "Nova Descoberta",
+        "target": "Brejo Da Guabiraba",
+        "weight": 0.33
     },
     {
-      "source": "Monteiro",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Monteiro",
+        "target": "Casa Amarela",
+        "weight": 0.105
     },
     {
-      "source": "Alto Jose Do Pinho",
-      "target": "Morro Da Conceicao",
-      "weight": 1.0
+        "source": "Alto Jose Do Pinho",
+        "target": "Morro Da Conceicao",
+        "weight": 0.195
     },
     {
-      "source": "Iputinga",
-      "target": "Cordeiro",
-      "weight": 1.0
+        "source": "Iputinga",
+        "target": "Cordeiro",
+        "weight": 0.3
     },
     {
-      "source": "Macaxeira",
-      "target": "Corrego Do Jenipapo",
-      "weight": 1.0
+        "source": "Macaxeira",
+        "target": "Corrego Do Jenipapo",
+        "weight": 0.75
     },
     {
-      "source": "Fundao",
-      "target": "Porto Da Madeira",
-      "weight": 1.0
+        "source": "Fundao",
+        "target": "Porto Da Madeira",
+        "weight": 0.45
     },
     {
-      "source": "Jardim Sao Paulo",
-      "target": "Curado",
-      "weight": 1.0
+        "source": "Jardim Sao Paulo",
+        "target": "Curado",
+        "weight": 0.57
     },
     {
-      "source": "Cidade Universitaria",
-      "target": "Varzea",
-      "weight": 1.0
+        "source": "Cidade Universitaria",
+        "target": "Varzea",
+        "weight": 0.75
     },
     {
-      "source": "Agua Fria",
-      "target": "Beberibe",
-      "weight": 1.0
+        "source": "Agua Fria",
+        "target": "Beberibe",
+        "weight": 0.165
     },
     {
-      "source": "Varzea",
-      "target": "Iputinga",
-      "weight": 1.0
+        "source": "Varzea",
+        "target": "Iputinga",
+        "weight": 0.63
     },
     {
-      "source": "Imbiribeira",
-      "target": "Ibura",
-      "weight": 1.0
+        "source": "Imbiribeira",
+        "target": "Ibura",
+        "weight": 0.935
     },
     {
-      "source": "Barro",
-      "target": "Tejipio",
-      "weight": 1.0
+        "source": "Barro",
+        "target": "Tejipio",
+        "weight": 1.68
     },
     {
-      "source": "Boa Viagem",
-      "target": "Pina",
-      "weight": 1.0
+        "source": "Boa Viagem",
+        "target": "Pina",
+        "weight": 1.36
     },
     {
-      "source": "Jordao",
-      "target": "Ibura",
-      "weight": 1.0
+        "source": "Jordao",
+        "target": "Ibura",
+        "weight": 0.6
     },
     {
-      "source": "Poco",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Poco",
+        "target": "Casa Amarela",
+        "weight": 0.1575
     },
     {
-      "source": "Engenho Do Meio",
-      "target": "Iputinga",
-      "weight": 1.0
+        "source": "Engenho Do Meio",
+        "target": "Iputinga",
+        "weight": 0.3975
     },
     {
-      "source": "Derby",
-      "target": "Gracas",
-      "weight": 1.0
+        "source": "Derby",
+        "target": "Gracas",
+        "weight": 0.18
     },
     {
-      "source": "Toto",
-      "target": "Curado",
-      "weight": 1.0
+        "source": "Toto",
+        "target": "Curado",
+        "weight": 0.165
     },
     {
-      "source": "Coqueiral",
-      "target": "Toto",
-      "weight": 1.0
+        "source": "Coqueiral",
+        "target": "Toto",
+        "weight": 0.204
     },
     {
-      "source": "Encruzilhada",
-      "target": "Ponto De Parada",
-      "weight": 1.0
+        "source": "Encruzilhada",
+        "target": "Ponto De Parada",
+        "weight": 0.174
     },
     {
-      "source": "Fundao",
-      "target": "Cajueiro",
-      "weight": 1.0
+        "source": "Fundao",
+        "target": "Cajueiro",
+        "weight": 0.885
     },
     {
-      "source": "Cohab",
-      "target": "Ibura",
-      "weight": 1.0
+        "source": "Cohab",
+        "target": "Ibura",
+        "weight": 0.645
     },
     {
-      "source": "Jiquia",
-      "target": "San Martin",
-      "weight": 1.0
+        "source": "Jiquia",
+        "target": "San Martin",
+        "weight": 0.6
     },
     {
-      "source": "Gracas",
-      "target": "Aflitos",
-      "weight": 1.0
+        "source": "Gracas",
+        "target": "Aflitos",
+        "weight": 0.675
     },
     {
-      "source": "Porto Da Madeira",
-      "target": "Beberibe",
-      "weight": 1.0
+        "source": "Porto Da Madeira",
+        "target": "Beberibe",
+        "weight": 0.675
     },
     {
-      "source": "Gracas",
-      "target": "Jaqueira",
-      "weight": 1.0
+        "source": "Gracas",
+        "target": "Jaqueira",
+        "weight": 0.216
     },
     {
-      "source": "Hipodromo",
-      "target": "Ponto De Parada",
-      "weight": 1.0
+        "source": "Hipodromo",
+        "target": "Ponto De Parada",
+        "weight": 0.18
     },
     {
-      "source": "Arruda",
-      "target": "Agua Fria",
-      "weight": 1.0
+        "source": "Arruda",
+        "target": "Agua Fria",
+        "weight": 0.339
     },
     {
-      "source": "Bomba Do Hemeterio",
-      "target": "Agua Fria",
-      "weight": 1.0
+        "source": "Bomba Do Hemeterio",
+        "target": "Agua Fria",
+        "weight": 0.225
     },
     {
-      "source": "Madalena",
-      "target": "Prado",
-      "weight": 1.0
+        "source": "Madalena",
+        "target": "Prado",
+        "weight": 0.555
     },
     {
-      "source": "Mustardinha",
-      "target": "San Martin",
-      "weight": 1.0
+        "source": "Mustardinha",
+        "target": "San Martin",
+        "weight": 0.219
     },
     {
-      "source": "Pina",
-      "target": "Brasilia Teimosa",
-      "weight": 1.0
+        "source": "Pina",
+        "target": "Brasilia Teimosa",
+        "weight": 0.144
     },
     {
-      "source": "Cajueiro",
-      "target": "Porto Da Madeira",
-      "weight": 1.0
+        "source": "Cajueiro",
+        "target": "Porto Da Madeira",
+        "weight": 0.57
     },
     {
-      "source": "Vasco Da Gama",
-      "target": "Nova Descoberta",
-      "weight": 1.0
+        "source": "Vasco Da Gama",
+        "target": "Nova Descoberta",
+        "weight": 0.3
     },
     {
-      "source": "Poco",
-      "target": "Casa Forte",
-      "weight": 1.0
+        "source": "Poco",
+        "target": "Casa Forte",
+        "weight": 0.63
     },
     {
-      "source": "Mangabeira",
-      "target": "Alto Jose Do Pinho",
-      "weight": 1.0
+        "source": "Mangabeira",
+        "target": "Alto Jose Do Pinho",
+        "weight": 0.045
     },
     {
-      "source": "Campina Do Barreto",
-      "target": "Fundao",
-      "weight": 1.0
+        "source": "Campina Do Barreto",
+        "target": "Fundao",
+        "weight": 0.1725
     },
     {
-      "source": "Nova Descoberta",
-      "target": "Corrego Do Jenipapo",
-      "weight": 1.0
+        "source": "Nova Descoberta",
+        "target": "Corrego Do Jenipapo",
+        "weight": 0.12
     },
     {
-      "source": "Dois Irmaos",
-      "target": "Brejo Da Guabiraba",
-      "weight": 1.0
+        "source": "Dois Irmaos",
+        "target": "Brejo Da Guabiraba",
+        "weight": 0.493
     },
     {
-      "source": "Boa Viagem",
-      "target": "Ibura",
-      "weight": 1.0
+        "source": "Boa Viagem",
+        "target": "Ibura",
+        "weight": 0.7695
     },
     {
-      "source": "Cacote",
-      "target": "Areias",
-      "weight": 1.0
+        "source": "Cacote",
+        "target": "Areias",
+        "weight": 0.393
     },
     {
-      "source": "Jaqueira",
-      "target": "Parnamirim",
-      "weight": 1.0
+        "source": "Jaqueira",
+        "target": "Parnamirim",
+        "weight": 0.0675
     },
     {
-      "source": "Engenho Do Meio",
-      "target": "Cidade Universitaria",
-      "weight": 1.0
+        "source": "Engenho Do Meio",
+        "target": "Cidade Universitaria",
+        "weight": 0.24
     },
     {
-      "source": "Afogados",
-      "target": "Jiquia",
-      "weight": 1.0
+        "source": "Afogados",
+        "target": "Jiquia",
+        "weight": 0.225
     },
     {
-      "source": "Paissandu",
-      "target": "Ilha Do Leite",
-      "weight": 1.0
+        "source": "Paissandu",
+        "target": "Ilha Do Leite",
+        "weight": 0.591
     },
     {
-      "source": "Arruda",
-      "target": "Bomba Do Hemeterio",
-      "weight": 1.0
+        "source": "Arruda",
+        "target": "Bomba Do Hemeterio",
+        "weight": 0.561
     },
     {
-      "source": "Ilha Do Retiro",
-      "target": "Madalena",
-      "weight": 1.0
+        "source": "Ilha Do Retiro",
+        "target": "Madalena",
+        "weight": 0.3195
     },
     {
-      "source": "Jordao",
-      "target": "Cohab",
-      "weight": 1.0
+        "source": "Jordao",
+        "target": "Cohab",
+        "weight": 0.15
     },
     {
-      "source": "Cabanga",
-      "target": "Sao Jose",
-      "weight": 1.0
+        "source": "Cabanga",
+        "target": "Sao Jose",
+        "weight": 0.105
     },
     {
-      "source": "Zumbi",
-      "target": "Cordeiro",
-      "weight": 1.0
+        "source": "Zumbi",
+        "target": "Cordeiro",
+        "weight": 0.216
     },
     {
-      "source": "Encruzilhada",
-      "target": "Hipodromo",
-      "weight": 1.0
+        "source": "Encruzilhada",
+        "target": "Hipodromo",
+        "weight": 0.3465
     },
     {
-      "source": "Prado",
-      "target": "Cordeiro",
-      "weight": 1.0
+        "source": "Prado",
+        "target": "Cordeiro",
+        "weight": 0.153
     },
     {
-      "source": "Casa Amarela",
-      "target": "Morro Da Conceicao",
-      "weight": 1.0
+        "source": "Casa Amarela",
+        "target": "Morro Da Conceicao",
+        "weight": 0.33
     },
     {
-      "source": "Coelhos",
-      "target": "Ilha Do Leite",
-      "weight": 1.0
+        "source": "Coelhos",
+        "target": "Ilha Do Leite",
+        "weight": 0.7875
     },
     {
-      "source": "Encruzilhada",
-      "target": "Rosarinho",
-      "weight": 1.0
+        "source": "Encruzilhada",
+        "target": "Rosarinho",
+        "weight": 0.6645
     },
     {
-      "source": "Poco",
-      "target": "Monteiro",
-      "weight": 1.0
+        "source": "Poco",
+        "target": "Monteiro",
+        "weight": 0.42
     },
     {
-      "source": "Hipodromo",
-      "target": "Campo Grande",
-      "weight": 1.0
+        "source": "Hipodromo",
+        "target": "Campo Grande",
+        "weight": 0.843
     },
     {
-      "source": "Torre",
-      "target": "Cordeiro",
-      "weight": 1.0
+        "source": "Torre",
+        "target": "Cordeiro",
+        "weight": 0.201
     },
     {
-      "source": "Arruda",
-      "target": "Campina Do Barreto",
-      "weight": 1.0
+        "source": "Arruda",
+        "target": "Campina Do Barreto",
+        "weight": 0.216
     },
     {
-      "source": "Arruda",
-      "target": "Peixinhos",
-      "weight": 1.0
+        "source": "Arruda",
+        "target": "Peixinhos",
+        "weight": 0.96
     },
     {
-      "source": "Parnamirim",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Parnamirim",
+        "target": "Casa Amarela",
+        "weight": 0.2625
     },
     {
-      "source": "Santo Antonio",
-      "target": "Boa Vista",
-      "weight": 1.0
+        "source": "Santo Antonio",
+        "target": "Boa Vista",
+        "weight": 0.1125
     },
     {
-      "source": "Vasco Da Gama",
-      "target": "Brejo De Beberibe",
-      "weight": 1.0
+        "source": "Vasco Da Gama",
+        "target": "Brejo De Beberibe",
+        "weight": 0.738
     },
     {
-      "source": "Linha Do Tiro",
-      "target": "Beberibe",
-      "weight": 1.0
+        "source": "Linha Do Tiro",
+        "target": "Beberibe",
+        "weight": 0.78
     },
     {
-      "source": "Mangueira",
-      "target": "Mustardinha",
-      "weight": 1.0
+        "source": "Mangueira",
+        "target": "Mustardinha",
+        "weight": 0.159
     },
     {
-      "source": "Soledade",
-      "target": "Boa Vista",
-      "weight": 1.0
+        "source": "Soledade",
+        "target": "Boa Vista",
+        "weight": 0.315
     },
     {
-      "source": "Casa Amarela",
-      "target": "Alto Do Mandu",
-      "weight": 1.0
+        "source": "Casa Amarela",
+        "target": "Alto Do Mandu",
+        "weight": 0.2475
     },
     {
-      "source": "Ponto De Parada",
-      "target": "Rosarinho",
-      "weight": 1.0
+        "source": "Ponto De Parada",
+        "target": "Rosarinho",
+        "weight": 0.189
     },
     {
-      "source": "Encruzilhada",
-      "target": "Campo Grande",
-      "weight": 1.0
+        "source": "Encruzilhada",
+        "target": "Campo Grande",
+        "weight": 0.51
     },
     {
-      "source": "Madalena",
-      "target": "Torre",
-      "weight": 1.0
+        "source": "Madalena",
+        "target": "Torre",
+        "weight": 0.234
     },
     {
-      "source": "Madalena",
-      "target": "Zumbi",
-      "weight": 1.0
+        "source": "Madalena",
+        "target": "Zumbi",
+        "weight": 0.114
     },
     {
-      "source": "Linha Do Tiro",
-      "target": "Dois Unidos",
-      "weight": 1.0
+        "source": "Linha Do Tiro",
+        "target": "Dois Unidos",
+        "weight": 0.948
     },
     {
-      "source": "Gracas",
-      "target": "Espinheiro",
-      "weight": 1.0
+        "source": "Gracas",
+        "target": "Espinheiro",
+        "weight": 0.45
     },
     {
-      "source": "Casa Forte",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Casa Forte",
+        "target": "Casa Amarela",
+        "weight": 0.105
     },
     {
-      "source": "Ilha Joana Bezerra",
-      "target": "Sao Jose",
-      "weight": 1.0
+        "source": "Ilha Joana Bezerra",
+        "target": "Sao Jose",
+        "weight": 0.375
     },
     {
-      "source": "Brejo De Beberibe",
-      "target": "Passarinho",
-      "weight": 1.0
+        "source": "Brejo De Beberibe",
+        "target": "Passarinho",
+        "weight": 0.318
     },
     {
-      "source": "Ilha Do Retiro",
-      "target": "Prado",
-      "weight": 1.0
+        "source": "Ilha Do Retiro",
+        "target": "Prado",
+        "weight": 0.3045
     },
     {
-      "source": "Ilha Do Leite",
-      "target": "Boa Vista",
-      "weight": 1.0
+        "source": "Ilha Do Leite",
+        "target": "Boa Vista",
+        "weight": 0.345
     },
     {
-      "source": "Tamarineira",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Tamarineira",
+        "target": "Casa Amarela",
+        "weight": 0.345
     },
     {
-      "source": "Tamarineira",
-      "target": "Alto Jose Do Pinho",
-      "weight": 1.0
+        "source": "Tamarineira",
+        "target": "Alto Jose Do Pinho",
+        "weight": 0.276
     },
     {
-      "source": "Jaqueira",
-      "target": "Tamarineira",
-      "weight": 1.0
+        "source": "Jaqueira",
+        "target": "Tamarineira",
+        "weight": 0.405
     },
     {
-      "source": "Espinheiro",
-      "target": "Aflitos",
-      "weight": 1.0
+        "source": "Espinheiro",
+        "target": "Aflitos",
+        "weight": 0.45
     },
     {
-      "source": "Parnamirim",
-      "target": "Casa Forte",
-      "weight": 1.0
+        "source": "Parnamirim",
+        "target": "Casa Forte",
+        "weight": 0.285
     },
     {
-      "source": "Campo Grande",
-      "target": "Arruda",
-      "weight": 1.0
+        "source": "Campo Grande",
+        "target": "Arruda",
+        "weight": 0.93
     },
     {
-      "source": "Parnamirim",
-      "target": "Santana",
-      "weight": 1.0
+        "source": "Parnamirim",
+        "target": "Santana",
+        "weight": 0.1275
     },
     {
-      "source": "Paissandu",
-      "target": "Boa Vista",
-      "weight": 1.0
+        "source": "Paissandu",
+        "target": "Boa Vista",
+        "weight": 0.105
     },
     {
-      "source": "Santana",
-      "target": "Casa Forte",
-      "weight": 1.0
+        "source": "Santana",
+        "target": "Casa Forte",
+        "weight": 0.4545
     },
     {
-      "source": "Coelhos",
-      "target": "Santo Antonio",
-      "weight": 1.0
+        "source": "Coelhos",
+        "target": "Santo Antonio",
+        "weight": 0.381
     },
     {
-      "source": "Santana",
-      "target": "Poco",
-      "weight": 1.0
+        "source": "Santana",
+        "target": "Poco",
+        "weight": 0.1965
     },
     {
-      "source": "Apipucos",
-      "target": "Monteiro",
-      "weight": 1.0
+        "source": "Apipucos",
+        "target": "Monteiro",
+        "weight": 0.5265
     },
     {
-      "source": "Torreao",
-      "target": "Encruzilhada",
-      "weight": 1.0
+        "source": "Torreao",
+        "target": "Encruzilhada",
+        "weight": 0.39
     },
     {
-      "source": "San Martin",
-      "target": "Curado",
-      "weight": 1.0
+        "source": "San Martin",
+        "target": "Curado",
+        "weight": 0.78
     },
     {
-      "source": "Coqueiral",
-      "target": "Sancho",
-      "weight": 1.0
+        "source": "Coqueiral",
+        "target": "Sancho",
+        "weight": 0.63
     },
     {
-      "source": "Campina Do Barreto",
-      "target": "Agua Fria",
-      "weight": 1.0
+        "source": "Campina Do Barreto",
+        "target": "Agua Fria",
+        "weight": 0.309
     },
     {
-      "source": "Apipucos",
-      "target": "Alto Do Mandu",
-      "weight": 1.0
+        "source": "Apipucos",
+        "target": "Alto Do Mandu",
+        "weight": 0.2715
     },
     {
-      "source": "Jiquia",
-      "target": "Mangueira",
-      "weight": 1.0
+        "source": "Jiquia",
+        "target": "Mangueira",
+        "weight": 0.2745
     },
     {
-      "source": "Casa Amarela",
-      "target": "Vasco Da Gama",
-      "weight": 1.0
+        "source": "Casa Amarela",
+        "target": "Vasco Da Gama",
+        "weight": 0.273
     },
     {
-      "source": "Alto Do Mandu",
-      "target": "Macaxeira",
-      "weight": 1.0
+        "source": "Alto Do Mandu",
+        "target": "Macaxeira",
+        "weight": 1.12
     },
     {
-      "source": "Monteiro",
-      "target": "Alto Do Mandu",
-      "weight": 1.0
+        "source": "Monteiro",
+        "target": "Alto Do Mandu",
+        "weight": 0.585
     },
     {
-      "source": "Campo Grande",
-      "target": "Ponto De Parada",
-      "weight": 1.0
+        "source": "Campo Grande",
+        "target": "Ponto De Parada",
+        "weight": 0.1095
     },
     {
-      "source": "Varzea",
-      "target": "Caxanga",
-      "weight": 1.0
+        "source": "Varzea",
+        "target": "Caxanga",
+        "weight": 0.2565
     },
     {
-      "source": "Mangueira",
-      "target": "San Martin",
-      "weight": 1.0
+        "source": "Mangueira",
+        "target": "San Martin",
+        "weight": 0.3975
     },
     {
-      "source": "Gracas",
-      "target": "Tamarineira",
-      "weight": 1.0
+        "source": "Gracas",
+        "target": "Tamarineira",
+        "weight": 0.144
     },
     {
-      "source": "Sancho",
-      "target": "Toto",
-      "weight": 1.0
+        "source": "Sancho",
+        "target": "Toto",
+        "weight": 0.135
     },
     {
-      "source": "Santo Antonio",
-      "target": "Recife",
-      "weight": 1.0
+        "source": "Santo Antonio",
+        "target": "Recife",
+        "weight": 0.4425
     },
     {
-      "source": "Sao Jose",
-      "target": "Recife",
-      "weight": 1.0
+        "source": "Sao Jose",
+        "target": "Recife",
+        "weight": 0.3765
     },
     {
-      "source": "Sao Jose",
-      "target": "Coelhos",
-      "weight": 1.0
+        "source": "Sao Jose",
+        "target": "Coelhos",
+        "weight": 0.213
     },
     {
-      "source": "Corrego Do Jenipapo",
-      "target": "Brejo Da Guabiraba",
-      "weight": 1.0
+        "source": "Corrego Do Jenipapo",
+        "target": "Brejo Da Guabiraba",
+        "weight": 0.174
     },
     {
-      "source": "Campo Grande",
-      "target": "Peixinhos",
-      "weight": 1.0
+        "source": "Campo Grande",
+        "target": "Peixinhos",
+        "weight": 0.09
     },
     {
-      "source": "Sitio Dos Pintos",
-      "target": "Dois Irmaos",
-      "weight": 1.0
+        "source": "Sitio Dos Pintos",
+        "target": "Dois Irmaos",
+        "weight": 0.369
     },
     {
-      "source": "Ilha Joana Bezerra",
-      "target": "Paissandu",
-      "weight": 1.0
+        "source": "Ilha Joana Bezerra",
+        "target": "Paissandu",
+        "weight": 0.4245
     },
     {
-      "source": "Jaqueira",
-      "target": "Santana",
-      "weight": 1.0
+        "source": "Jaqueira",
+        "target": "Santana",
+        "weight": 0.0525
     },
     {
-      "source": "Apipucos",
-      "target": "Macaxeira",
-      "weight": 1.0
+        "source": "Apipucos",
+        "target": "Macaxeira",
+        "weight": 0.33
     },
     {
-      "source": "Passarinho",
-      "target": "Brejo Da Guabiraba",
-      "weight": 1.0
+        "source": "Passarinho",
+        "target": "Brejo Da Guabiraba",
+        "weight": 0.327
     },
     {
-      "source": "Ilha Joana Bezerra",
-      "target": "Coelhos",
-      "weight": 1.0
+        "source": "Ilha Joana Bezerra",
+        "target": "Coelhos",
+        "weight": 0.435
     },
     {
-      "source": "Imbiribeira",
-      "target": "Pina",
-      "weight": 1.0
+        "source": "Imbiribeira",
+        "target": "Pina",
+        "weight": 0.3645
     },
     {
-      "source": "Boa Viagem",
-      "target": "Jordao",
-      "weight": 1.0
+        "source": "Boa Viagem",
+        "target": "Jordao",
+        "weight": 0.3255
     },
     {
-      "source": "Alto Jose Do Pinho",
-      "target": "Casa Amarela",
-      "weight": 1.0
+        "source": "Alto Jose Do Pinho",
+        "target": "Casa Amarela",
+        "weight": 0.6555
     },
     {
-      "source": "Santo Antonio",
-      "target": "Santo Amaro",
-      "weight": 1.0
+        "source": "Santo Antonio",
+        "target": "Santo Amaro",
+        "weight": 0.45
     },
     {
-      "source": "Jardim Sao Paulo",
-      "target": "Areias",
-      "weight": 1.0
+        "source": "Jardim Sao Paulo",
+        "target": "Areias",
+        "weight": 0.864
     },
     {
-      "source": "Recife",
-      "target": "Santo Amaro",
-      "weight": 1.0
+        "source": "Recife",
+        "target": "Santo Amaro",
+        "weight": 0.3045
     },
     {
-      "source": "Santo Antonio",
-      "target": "Soledade",
-      "weight": 1.0
+        "source": "Santo Antonio",
+        "target": "Soledade",
+        "weight": 1.33
     },
     {
-      "source": "Beberibe",
-      "target": "Dois Unidos",
-      "weight": 1.0
+        "source": "Beberibe",
+        "target": "Dois Unidos",
+        "weight": 0.304
     },
     {
-      "source": "Dois Irmaos",
-      "target": "Guabiraba",
-      "weight": 1.0
+        "source": "Dois Irmaos",
+        "target": "Guabiraba",
+        "weight": 2.65
     },
     {
-      "source": "Caxanga",
-      "target": "Apipucos",
-      "weight": 1.0
+        "source": "Caxanga",
+        "target": "Apipucos",
+        "weight": 2.0
     },
     {
-      "source": "Cabanga",
-      "target": "Pina",
-      "weight": 1.0
+        "source": "Cabanga",
+        "target": "Pina",
+        "weight": 0.87
     },
     {
-      "source": "Alto Jose Do Pinho",
-      "target": "Bomba Do Hemeterio",
-      "weight": 1.0
+        "source": "Alto Jose Do Pinho",
+        "target": "Bomba Do Hemeterio",
+        "weight": 0.06
     },
     {
-      "source": "Santo Amaro",
-      "target": "Torreao",
-      "weight": 1.0
+        "source": "Santo Amaro",
+        "target": "Torreao",
+        "weight": 0.048
     },
     {
-      "source": "Curado",
-      "target": "Varzea",
-      "weight": 1.0
+        "source": "Curado",
+        "target": "Varzea",
+        "weight": 1.05
     },
     {
-      "source": "Cohab",
-      "target": "Barro",
-      "weight": 1.0
+        "source": "Cohab",
+        "target": "Barro",
+        "weight": 0.464
     },
     {
-      "source": "Afogados",
-      "target": "Sao Jose",
-      "weight": 1.0
+        "source": "Afogados",
+        "target": "Sao Jose",
+        "weight": 0.117
     },
     {
-      "source": "Boa Vista",
-      "target": "Espinheiro",
-      "weight": 1.0
+        "source": "Boa Vista",
+        "target": "Espinheiro",
+        "weight": 0.33
     },
     {
-      "source": "Ilha Do Retiro",
-      "target": "Paissandu",
-      "weight": 1.0
+        "source": "Ilha Do Retiro",
+        "target": "Paissandu",
+        "weight": 0.3
     },
     {
-      "source": "Pau Ferro",
-      "target": "Guabiraba",
-      "weight": 1.0
+        "source": "Pau Ferro",
+        "target": "Guabiraba",
+        "weight": 1.77
     },
     {
-      "source": "Agua Fria",
-      "target": "Alto Santa Teresinha",
-      "weight": 1.0
+        "source": "Agua Fria",
+        "target": "Alto Santa Teresinha",
+        "weight": 0.795
+    },
+    {
+        "source": "Alto Santa Teresinha",
+        "target": "Alto Jose Do Pinho",
+        "weight": 0.288
     },
     {
       "source": "Alto Santa Teresinha",
-      "target": "Alto Jose Do Pinho",
-      "weight": 1.0
-    },
-    {
-      "source": "Alto Santa Teresinha",
       "target": "Alto Jose Bonifacio",
-      "weight": 1.0
+      "weight": 0.765
     }
   ]
 }
