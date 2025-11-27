@@ -1,4 +1,6 @@
-- Histograma: barras centradas em graus inteiros, expondo concentração e possíveis hubs.
+- Histograma dos Graus: O gráfico mostra que a maior parte dos bairros possui entre 3 e 5 conexões, indicando um padrão de
+  conectividade moderada na rede. Os extremos (1–2 conexões ou 7–9 conexões) são menos frequentes, revelando a presença de
+  poucos nós com baixa conectividade e poucos nós muito conectados, que funcionam como pontos estruturais importantes no grafo.
 - Densidade por microrregião: compara coesão local; picos indicam sub-redes mais conectadas.
 - Top-10 por grau: ordenação encadeada evidencia o núcleo estrutural (maior capacidade de difusão).
 - BFS (Boa Vista): camadas de alcance por nível – útil para rotas e propagação.
